@@ -6,13 +6,91 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="376dp"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.037">
+
+        <TextView
+            android:id="@+id/WelcomeText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="Welcome to RU Cafe!"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <ImageButton
+            android:id="@+id/donutButton"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/rounded_button"
+            android:contentDescription="Button to Donut Page."
+            android:foreground="@drawable/CakeDonut"
+            android:scaleType="centerInside" />
+
+        <TextView
+            android:id="@+id/orderDonutText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Order Donuts" />
+
+        <ImageButton
+            android:id="@+id/coffeeButton"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/rounded_button"
+            android:contentDescription="Button to Coffee Page."
+            android:foreground="@drawable/Coffee"
+            android:scaleType="centerInside" />
+
+        <TextView
+            android:id="@+id/orderCoffeeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Order Coffee" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/basketButton3"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_button"
+                android:contentDescription="Button to Basket Page."
+                android:foreground="@drawable/Basket"
+                android:scaleType="centerInside" />
+
+            <ImageButton
+                android:id="@+id/basketButton"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_button"
+                android:contentDescription="Button to Basket Page."
+                android:foreground="@drawable/Basket"
+                android:scaleType="centerInside" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
