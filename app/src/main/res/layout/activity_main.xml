@@ -4,17 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#faf0e1"
     tools:context=".MainActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="30dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="376dp"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,9 +27,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
+            android:background="#e8dbc8"
+            android:fontFamily="@font/wnggfont"
             android:gravity="center"
+            android:padding="30dp"
             android:text="Welcome to RU Cafe!"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" />
 
         <ImageButton
             android:id="@+id/donutButton"
@@ -38,7 +45,7 @@
             android:layout_height="150dp"
             android:background="@drawable/rounded_button"
             android:contentDescription="Button to Donut Page."
-            android:foreground="@drawable/CakeDonut"
+            android:foreground="@drawable/cakedonut"
             android:scaleType="centerInside" />
 
         <TextView
@@ -46,6 +53,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif-medium"
             android:text="Order Donuts" />
 
         <ImageButton
@@ -54,7 +62,7 @@
             android:layout_height="150dp"
             android:background="@drawable/rounded_button"
             android:contentDescription="Button to Coffee Page."
-            android:foreground="@drawable/Coffee"
+            android:foreground="@drawable/coffee"
             android:scaleType="centerInside" />
 
         <TextView
@@ -62,32 +70,71 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif-medium"
             android:text="Order Coffee" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/basketButton3"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/rounded_button"
-                android:contentDescription="Button to Basket Page."
-                android:foreground="@drawable/Basket"
-                android:scaleType="centerInside" />
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <ImageButton
-                android:id="@+id/basketButton"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                <ImageButton
+                    android:id="@+id/basketButton"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="Button to Basket Page."
+                    android:foreground="@drawable/basket"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Current Basket" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/rounded_button"
-                android:contentDescription="Button to Basket Page."
-                android:foreground="@drawable/Basket"
-                android:scaleType="centerInside" />
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/storeOrdersButton"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="Button to Store Orders Page."
+                    android:foreground="@drawable/storeorder"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Store Orders" />
+            </LinearLayout>
 
         </LinearLayout>
 
