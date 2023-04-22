@@ -25,21 +25,128 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="75dp"
 
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="75dp"
         android:layout_marginBottom="150dp"
         android:background="#faf0e1"
         android:contentDescription="@string/select_donut_type"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <ImageButton
+                android:id="@+id/matchaDonut"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@drawable/rounded_button"
+                android:contentDescription="@string/matcha_cake"
+                android:foreground="@drawable/cakematcha"
+                android:scaleType="centerInside" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <ImageButton
+                android:id="@+id/lemonDonut"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@drawable/rounded_button"
+                android:contentDescription="@string/lemon_cake"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/cakelemon" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <ImageButton
+                android:id="@+id/oreoDonut"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@drawable/rounded_button"
+                android:contentDescription="@string/oreo_cake"
+                android:scaleType="centerInside"
+                app:srcCompat="@drawable/cakeoreo" />
+        </LinearLayout>
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="75dp"
+
+        android:layout_marginEnd="200dp"
+        android:layout_marginBottom="150dp"
+        android:background="#faf0e1"
+        android:contentDescription="@string/select_donut_type"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="40dp"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <ImageButton
+                android:id="@+id/strawberryDonut"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@drawable/rounded_button"
+                android:contentDescription="@string/strawberry_cake"
+                android:foreground="@drawable/cakestrawberry"
+                android:scaleType="centerInside" />
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="20dp" />
+
+            <ImageButton
+                android:id="@+id/chocolateDonut"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@drawable/rounded_button"
+                android:contentDescription="@string/chocolate_cake"
+                android:foreground="@drawable/cakechoc"
+                android:scaleType="centerInside" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <ImageButton
+                android:id="@+id/pumpkinDonut"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:background="@drawable/rounded_button"
+                android:contentDescription="@string/pumpkin_cake"
+                android:foreground="@drawable/cakepumpkin"
+                android:scaleType="centerInside" />
+        </LinearLayout>
     </ScrollView>
 
     <Spinner
@@ -71,34 +178,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="220dp"
-        android:layout_marginEnd="20dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@id/scrollView2"
-        app:layout_constraintEnd_toEndOf="@id/scrollView2"
-        app:layout_constraintStart_toStartOf="@id/scrollView2"
-        app:layout_constraintTop_toTopOf="@id/scrollView2">
-
-        <ImageButton
-            android:id="@+id/donutButton"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="@drawable/rounded_button"
-            android:foreground="@drawable/CakeDonut"
-            android:scaleType="centerInside" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="220dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

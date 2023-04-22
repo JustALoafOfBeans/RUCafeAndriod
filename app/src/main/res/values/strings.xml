@@ -2,4 +2,11 @@
     <string name="app_name">RUCafeAndriod</string>
     <string name="select_donut_type">Choose your flavour!</string>
     <string name="donut_selection">Donut Selection</string>
+
+    <string name="strawberry_cake">Strawberry Cake</string>
+    <string name="chocolate_cake">Chocolate Cake</string>
+    <string name="matcha_cake">Matcha Cake</string>
+    <string name="lemon_cake">Lemon Cake</string>
+    <string name="oreo_cake">Oreo Cake</string>
+    <string name="pumpkin_cake">Pumpkin Cake</string>
 </resources>
