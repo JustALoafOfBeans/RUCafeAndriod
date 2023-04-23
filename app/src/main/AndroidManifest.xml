@@ -13,6 +13,15 @@
         android:theme="@style/Theme.RUCafeAndriod"
         tools:targetApi="31">
         <activity
+            android:name=".StoreOrdersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BasketActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DonutActivity"
+            android:exported="false" />
+        <activity
             android:name=".CoffeeActivity"
             android:exported="false" />
         <activity
