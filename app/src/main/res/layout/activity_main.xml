@@ -26,18 +26,13 @@
             android:id="@+id/WelcomeText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:background="#e8dbc8"
             android:fontFamily="@font/wnggfont"
             android:gravity="center"
             android:padding="30dp"
             android:text="@string/header_main"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" />
 
         <ImageButton
             android:id="@+id/donutButton"
