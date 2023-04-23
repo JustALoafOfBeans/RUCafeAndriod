@@ -27,7 +27,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="75dp"
 
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="115dp"
         android:background="#faf0e1"
         android:clipToPadding="true"
         android:contentDescription="@string/select_donut_type"
@@ -132,8 +132,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="90dp"
-                        android:text="@string/cake_lemon"
-                        android:fontFamily="@font/wnggfont" />
+                        android:fontFamily="@font/wnggfont"
+                        android:text="@string/cake_lemon" />
 
                     <ImageButton
                         android:id="@+id/cakematchaButton"
@@ -152,8 +152,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="83dp"
                         android:layout_marginBottom="10dp"
-                        android:text="@string/cake_matcha"
-                        android:fontFamily="@font/wnggfont" />
+                        android:fontFamily="@font/wnggfont"
+                        android:text="@string/cake_matcha" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -396,34 +396,47 @@
         </LinearLayout>
     </ScrollView>
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/subtotalText"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="100dp"
-        android:background="#faf0e1"
-        android:fillViewport="true"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
         android:layout_marginStart="140dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="140dp"
-        android:layout_marginBottom="16dp"
-        android:background="#F9EFE0"
-        android:text="@string/add_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="555dp"
+        android:fontFamily="@font/wnggfont"
+        android:text="@string/subtotal_default"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner"
-        tools:ignore="VisualLintButtonSize" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="575dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Spinner
+            android:id="@+id/quantitySpinner"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="100dp"
+            android:background="#faf0e1"
+            android:fillViewport="true"
+            android:minHeight="48dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/orderButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-45dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="16dp"
+            android:background="#F9EFE0"
+            android:text="@string/add_button"
+            tools:ignore="VisualLintButtonSize" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
