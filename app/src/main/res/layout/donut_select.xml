@@ -25,12 +25,14 @@
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:layout_marginTop="75dp"
+
         android:layout_marginBottom="150dp"
         android:background="#faf0e1"
+        android:clipToPadding="true"
         android:contentDescription="@string/select_donut_type"
 
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,96 +41,260 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:orientation="vertical">
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="10dp" />
-
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/padTextWhy"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cake Donuts" />
+                android:layout_height="850dp"
+                android:text="TextView" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="vertical"></LinearLayout>
 
-            <ImageButton
-                android:id="@+id/matchaDonut"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:background="@drawable/rounded_button"
-                android:contentDescription="@string/matcha_cake"
-                android:foreground="@drawable/cakematcha"
-                android:scaleType="centerInside" />
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/wnggfont"
+                android:text="@string/cake_donuts"
+                android:textColor="#917447"
+                android:textSize="23sp" />
 
-            <Space
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/lemonDonut"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:background="@drawable/rounded_button"
-                android:contentDescription="@string/lemon_cake"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/cakelemon" />
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-            <Space
+                    <ImageButton
+                        android:id="@+id/cakechocButton"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/rounded_button"
+                        android:contentDescription="Button to select chocolate cake donut."
+                        android:foreground="@drawable/cake_chocolate"
+                        android:scaleType="centerInside" />
+
+                    <ImageButton
+                        android:id="@+id/cakeblueberryButton"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/rounded_button"
+                        android:contentDescription="Button to select blueberry cake donut."
+                        android:foreground="@drawable/cake_blueberry"
+                        android:scaleType="centerInside" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="203dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/cakelemonButton"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/rounded_button"
+                        android:contentDescription="Button to select lemon cake donut."
+                        android:foreground="@drawable/cake_lemon"
+                        android:scaleType="centerInside" />
+
+                    <ImageButton
+                        android:id="@+id/cakematchaButton"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/rounded_button"
+                        android:contentDescription="Button to select matcha cake donut."
+                        android:foreground="@drawable/cake_matcha"
+                        android:scaleType="centerInside" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/yeastdonutText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/wnggfont"
+                android:text="@string/yeast_donuts"
+                android:textColor="#917447"
+                android:textSize="23sp" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/oreoDonut"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:background="@drawable/rounded_button"
-                android:contentDescription="@string/oreo_cake"
-                android:scaleType="centerInside"
-                app:srcCompat="@drawable/cakeoreo" />
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-            <Space
+                    <ImageButton
+                        android:id="@+id/yeastcookieButton"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/rounded_button"
+                        android:contentDescription="Button to select cookies and cream yeast donut."
+                        android:foreground="@drawable/yeast_cookie"
+                        android:scaleType="centerInside" />
+
+                    <ImageButton
+                        android:id="@+id/yeastchocolateButton"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/rounded_button"
+                        android:contentDescription="Button to select chocolate yeast donut."
+                        android:foreground="@drawable/yeast_chocolate"
+                        android:scaleType="centerInside" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="203dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/yeastraspberryButton"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/rounded_button"
+                        android:contentDescription="Button to select raspberry yeast donut."
+                        android:foreground="@drawable/yeast_raspberry"
+                        android:scaleType="centerInside" />
+
+                    <ImageButton
+                        android:id="@+id/yeaststrawberryButton"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/rounded_button"
+                        android:contentDescription="Button to select strawberry yeast donut."
+                        android:foreground="@drawable/yeast_strawberry"
+                        android:scaleType="centerInside" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="10dp" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <ImageButton
-                android:id="@+id/strawberryDonut"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:background="@drawable/rounded_button"
-                android:contentDescription="@string/strawberry_cake"
-                android:foreground="@drawable/cakestrawberry"
-                android:scaleType="centerInside" />
+                <ImageButton
+                    android:id="@+id/yeastbostonButton"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginStart="125dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="Button to select boston creme yeast donut"
+                    android:foreground="@drawable/yeast_boston"
+                    android:scaleType="centerInside" />
 
-            <Space
-                android:layout_width="10dp"
-                android:layout_height="20dp" />
+            </LinearLayout>
 
-            <ImageButton
-                android:id="@+id/chocolateDonut"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:background="@drawable/rounded_button"
-                android:contentDescription="@string/chocolate_cake"
-                android:foreground="@drawable/cakechoc"
-                android:scaleType="centerInside" />
+            <TextView
+                android:id="@+id/holedonutText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/wnggfont"
+                android:text="@string/hole_donuts"
+                android:textColor="#917447"
+                android:textSize="23sp" />
 
-            <Space
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/pumpkinDonut"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:background="@drawable/rounded_button"
-                android:contentDescription="@string/pumpkin_cake"
-                android:foreground="@drawable/cakepumpkin"
-                android:scaleType="centerInside" />
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/holechocolateButton"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/rounded_button"
+                        android:contentDescription="Button to select chocolate hole donut."
+                        android:foreground="@drawable/hole_chocolate"
+                        android:scaleType="centerInside" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="203dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/holepumpkinButton"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/rounded_button"
+                        android:contentDescription="Button to select pumpkin yeast donut."
+                        android:foreground="@drawable/hole_pumpkin"
+                        android:scaleType="centerInside" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/holeglazedButton"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginStart="125dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/rounded_button"
+                    android:contentDescription="Button to select glazed hole donut"
+                    android:foreground="@drawable/hole_glazed"
+                    android:scaleType="centerInside" />
+
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 
@@ -159,6 +325,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        tools:ignore="VisualLintButtonSize" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

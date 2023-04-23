@@ -7,13 +7,11 @@
 
     <string name="select_donut_type">Choose your flavour!</string>
     <string name="donut_selection">Donut Selection</string>
+    <string name="cake_donuts">Cake Donuts</string>
+    <string name="yeast_donuts">Yeast Donuts</string>
+    <string name="hole_donuts">Donut Holes</string>
 
-    <string name="strawberry_cake">Strawberry Cake</string>
     <string name="chocolate_cake">Chocolate Cake</string>
-    <string name="matcha_cake">Matcha Cake</string>
-    <string name="lemon_cake">Lemon Cake</string>
-    <string name="oreo_cake">Oreo Cake</string>
-    <string name="pumpkin_cake">Pumpkin Cake</string>
 
     <string name="coffee_selection">Coffee Selection</string>
     <string name="quantity">Quantity: </string>
