@@ -47,13 +47,8 @@
             <TextView
                 android:id="@+id/padTextWhy"
                 android:layout_width="match_parent"
-                android:layout_height="850dp"
-                android:text="TextView" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"></LinearLayout>
+                android:layout_height="1000dp"
+                android:text="@string/padding" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -77,7 +72,7 @@
                     android:orientation="vertical">
 
                     <ImageButton
-                        android:id="@+id/cakechocButton"
+                        android:id="@+id/cakechocolateButton"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:layout_marginStart="30dp"
@@ -86,6 +81,14 @@
                         android:contentDescription="Button to select chocolate cake donut."
                         android:foreground="@drawable/cake_chocolate"
                         android:scaleType="centerInside" />
+
+                    <TextView
+                        android:id="@+id/cakechocolateText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="75dp"
+                        android:fontFamily="@font/wnggfont"
+                        android:text="@string/cake_chocolate" />
 
                     <ImageButton
                         android:id="@+id/cakeblueberryButton"
@@ -97,6 +100,15 @@
                         android:contentDescription="Button to select blueberry cake donut."
                         android:foreground="@drawable/cake_blueberry"
                         android:scaleType="centerInside" />
+
+                    <TextView
+                        android:id="@+id/cakeblueberryText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="73dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/wnggfont"
+                        android:text="@string/cake_blueberry" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -115,6 +127,14 @@
                         android:foreground="@drawable/cake_lemon"
                         android:scaleType="centerInside" />
 
+                    <TextView
+                        android:id="@+id/cakelemonText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="90dp"
+                        android:text="@string/cake_lemon"
+                        android:fontFamily="@font/wnggfont" />
+
                     <ImageButton
                         android:id="@+id/cakematchaButton"
                         android:layout_width="150dp"
@@ -125,6 +145,15 @@
                         android:contentDescription="Button to select matcha cake donut."
                         android:foreground="@drawable/cake_matcha"
                         android:scaleType="centerInside" />
+
+                    <TextView
+                        android:id="@+id/cakematchaText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="83dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/cake_matcha"
+                        android:fontFamily="@font/wnggfont" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -161,6 +190,14 @@
                         android:foreground="@drawable/yeast_cookie"
                         android:scaleType="centerInside" />
 
+                    <TextView
+                        android:id="@+id/yeastcookieText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="48dp"
+                        android:fontFamily="@font/wnggfont"
+                        android:text="@string/yeast_cookie" />
+
                     <ImageButton
                         android:id="@+id/yeastchocolateButton"
                         android:layout_width="150dp"
@@ -171,6 +208,15 @@
                         android:contentDescription="Button to select chocolate yeast donut."
                         android:foreground="@drawable/yeast_chocolate"
                         android:scaleType="centerInside" />
+
+                    <TextView
+                        android:id="@+id/yeastchocolateText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="75dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/wnggfont"
+                        android:text="@string/yeast_chocolate" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -184,22 +230,38 @@
                         android:layout_height="150dp"
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
                         android:background="@drawable/rounded_button"
                         android:contentDescription="Button to select raspberry yeast donut."
                         android:foreground="@drawable/yeast_raspberry"
                         android:scaleType="centerInside" />
+
+                    <TextView
+                        android:id="@+id/yeastraspberryText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="75dp"
+                        android:fontFamily="@font/wnggfont"
+                        android:text="@string/yeast_raspberry" />
 
                     <ImageButton
                         android:id="@+id/yeaststrawberryButton"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:layout_marginStart="30dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="20dp"
                         android:background="@drawable/rounded_button"
                         android:contentDescription="Button to select strawberry yeast donut."
                         android:foreground="@drawable/yeast_strawberry"
                         android:scaleType="centerInside" />
+
+                    <TextView
+                        android:id="@+id/yeaststrawberryText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="73dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/wnggfont"
+                        android:text="@string/yeast_strawberry" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -219,6 +281,15 @@
                     android:contentDescription="Button to select boston creme yeast donut"
                     android:foreground="@drawable/yeast_boston"
                     android:scaleType="centerInside" />
+
+                <TextView
+                    android:id="@+id/yeastbostonText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="162dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/wnggfont"
+                    android:text="@string/yeast_boston" />
 
             </LinearLayout>
 
@@ -254,6 +325,15 @@
                         android:foreground="@drawable/hole_chocolate"
                         android:scaleType="centerInside" />
 
+                    <TextView
+                        android:id="@+id/holechocolateText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="75dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/wnggfont"
+                        android:text="@string/hole_chocolate" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -272,6 +352,15 @@
                         android:contentDescription="Button to select pumpkin yeast donut."
                         android:foreground="@drawable/hole_pumpkin"
                         android:scaleType="centerInside" />
+
+                    <TextView
+                        android:id="@+id/holepumpkinText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="85dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/wnggfont"
+                        android:text="@string/hole_pumpkin" />
 
 
                 </LinearLayout>
@@ -292,6 +381,15 @@
                     android:contentDescription="Button to select glazed hole donut"
                     android:foreground="@drawable/hole_glazed"
                     android:scaleType="centerInside" />
+
+                <TextView
+                    android:id="@+id/holeglazedText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="180dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/wnggfont"
+                    android:text="@string/hole_glazed" />
 
             </LinearLayout>
 
