@@ -172,7 +172,7 @@
         android:layout_marginEnd="140dp"
         android:layout_marginBottom="16dp"
         android:background="#F9EFE0"
-        android:text="Add to order"
+        android:text="@string/add_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
