@@ -4,6 +4,7 @@
     <string name="header_main">Welcome to RUCafe!</string>
     <string name="add_button">ADD TO ORDER</string>
     <string name="subtotal_default">Subtotal: $0.00</string>
+    <string name="total_default">Total: $0.00</string>
 
     <string name="select_donut_type">Choose your flavour!</string>
     <string name="donut_selection">Donut Selection</string>
@@ -39,6 +40,12 @@
     <string name="mocha">Mocha</string>
 
     <string name="basket_selection">View Basket</string>
+    <string name="delete_button">Delete Item</string>
+    <string name="finalize_order">Finalize</string>
+    <string name="tax_default">Tax: $0.00</string>
 
     <string name="store_orders">Store Orders</string>
+    <string name="order_num">Order Number</string>
+    <string name="cancel">Cancel Order</string>
+    <string name="export">Export Orders</string>
 </resources>
