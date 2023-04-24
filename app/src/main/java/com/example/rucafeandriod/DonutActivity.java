@@ -10,7 +10,8 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class DonutActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
+public class DonutActivity extends AppCompatActivity {
 
     private ImageButton cakeChocolate, cakeBlueberry, cakeLemon, cakeMatcha;
     private ImageButton yeastCookie, yeastChocolate, yeastRaspberry, yeastStrawberry, yeastBoston;
