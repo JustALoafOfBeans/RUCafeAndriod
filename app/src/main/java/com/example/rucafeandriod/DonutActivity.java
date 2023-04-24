@@ -39,7 +39,6 @@ public class DonutActivity extends AppCompatActivity {
 
         // Set up quantity spinner
         Spinner quantityList = (Spinner) findViewById(R.id.quantitySpinner);
-        quantityList.setOnItemSelectedListener(this);
         ArrayAdapter ad = new ArrayAdapter(this, android.R.layout.simple_spinner_item, quantities);
         ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         quantityList.setAdapter(ad);
@@ -47,15 +46,5 @@ public class DonutActivity extends AppCompatActivity {
         // Set up subtotal text
 
         // Set up add to cart button
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        // Yahoobruh
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-        // Yoink
     }
 }
