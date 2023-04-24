@@ -6,20 +6,31 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class CoffeeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String[] quantities = {"1", "2", "3", "4", "5"};
     private RadioGroup coffee_radio_group;
-    private RadioButton short_btn;
+    private RadioButton selected, short_btn;
+    private CheckBox sCream, fVanilla, iCream, caramel, mocha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.coffee_select);
+
+        // Link check boxes
+        sCream = (CheckBox) findViewById(R.id.sweet_cream);
+        fVanilla = (CheckBox) findViewById(R.id.french_vanilla);
+        iCream = (CheckBox) findViewById(R.id.irish_cream);
+        caramel = (CheckBox) findViewById(R.id.caramel);
+        mocha =  (CheckBox) findViewById(R.id.mocha);
 
         // Set up radio group
         coffee_radio_group = (RadioGroup) findViewById(R.id.coffee_radio_group);
@@ -34,6 +45,42 @@ public class CoffeeActivity extends AppCompatActivity implements AdapterView.OnI
         ArrayAdapter ad = new ArrayAdapter(this, android.R.layout.simple_spinner_item, quantities);
         ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         quantityList.setAdapter(ad);
+    }
+
+    public Coffee makeCoffee() {
+        String size = getSize();
+        ArrayList<String> addIns = getAddIns();
+        Spinner quantityList = (Spinner) findViewById(R.id.spinner2);
+        int numberOf = Integer.parseInt(quantityList.getSelectedItem().toString());
+        Coffee item = new Coffee(size, addIns, numberOf);
+        Toast.makeText(getApplicationContext(), "make Coffee", Toast.LENGTH_LONG).show();
+        return item;
+    }
+
+    private ArrayList<String> getAddIns() {
+        ArrayList<String> ans = new ArrayList<>();
+        if (sCream.isChecked()) {
+            ans.add("sweet cream");
+        }
+        if (fVanilla.isChecked()) {
+            ans.add("french vanilla");
+        }
+        if (iCream.isChecked()) {
+            ans.add("irish cream");
+        }
+        if (caramel.isChecked()) {
+            ans.add("caramel");
+        }
+        if (mocha.isChecked()) {
+            ans.add("mocha");
+        }
+        return ans;
+    }
+
+    private String getSize() {
+        int selectedID = coffee_radio_group.getCheckedRadioButtonId();
+        selected = (RadioButton) findViewById(selectedID);
+        return (String) selected.getText();
     }
 
     @Override
