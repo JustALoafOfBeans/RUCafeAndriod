@@ -102,6 +102,11 @@ public class Donut extends MenuItem{
         return quantity + " " + type + " (" + flavor + ")";
     }
 
+    // Returns String format with no quantity for menu list
+    public String toStringMenu() {
+        return type + " (" + flavor + ")";
+    }
+
     /**
      * Method that returns type of Donut
      * @return type as String
