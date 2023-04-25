@@ -53,6 +53,7 @@ public class DonutActivity extends AppCompatActivity {
     }*/
 
     ArrayList<Donut> donuts;
+    String[] quantities = {"1", "2", "3", "4", "5"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
