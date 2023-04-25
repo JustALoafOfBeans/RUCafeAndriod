@@ -21,6 +21,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="560dp"
+        android:background="#E7DAC7"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
@@ -395,13 +402,6 @@
 
         </LinearLayout>
     </ScrollView>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_marginTop="560dp"
-        android:background="#E7DAC7"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:layout_width="match_parent"

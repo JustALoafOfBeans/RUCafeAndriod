@@ -1,6 +1,8 @@
 package com.example.rucafeandriod;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
@@ -10,10 +12,12 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 
 public class DonutActivity extends AppCompatActivity {
 
-    private ImageButton cakeChocolate, cakeBlueberry, cakeLemon, cakeMatcha;
+    /*private ImageButton cakeChocolate, cakeBlueberry, cakeLemon, cakeMatcha;
     private ImageButton yeastCookie, yeastChocolate, yeastRaspberry, yeastStrawberry, yeastBoston;
     private ImageButton holeChocolate, holePumpkin, holeGlazed;
 
@@ -46,5 +50,43 @@ public class DonutActivity extends AppCompatActivity {
         // Set up subtotal text
 
         // Set up add to cart button
+    }*/
+
+    ArrayList<Donut> donuts;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.donut_select_recycle);
+
+        RecyclerView rvDonuts = (RecyclerView) findViewById(R.id.rvDonuts);
+
+        donuts = createDonutsList();
+        // Create adapter passing in the sample user data
+        DonutAdapter adapter = new DonutAdapter(donuts);
+        rvDonuts.setAdapter(adapter);
+        // Set layout manager to position the items
+        rvDonuts.setLayoutManager(new LinearLayoutManager(this));
+        // That's all!
+    }
+
+    // Creates list of each type with 0 quantity at start
+    public static ArrayList<Donut> createDonutsList() {
+        ArrayList<Donut> donuts = new ArrayList<Donut>();
+
+        donuts.add(new Donut("Yeast Donut", "Chocolate glaze", 0));
+        donuts.add(new Donut("Yeast Donut", "Strawberry Glaze", 0));
+        donuts.add(new Donut("Yeast Donut", "Boston Cream", 0));
+        donuts.add(new Donut("Yeast Donut", "Cookies & Cream", 0));
+        donuts.add(new Donut("Yeast Donut", "Raspberry Glaze", 0));
+        donuts.add(new Donut("Cake Donut", "Lemon", 0));
+        donuts.add(new Donut("Cake Donut", "Blueberry", 0));
+        donuts.add(new Donut("Cake Donut", "Chocolate", 0));
+        donuts.add(new Donut("Cake Donut", "Matcha", 0));
+        donuts.add(new Donut("Donut Hole", "Chocolate", 0));
+        donuts.add(new Donut("Donut Hole", "Glazed", 0));
+        donuts.add(new Donut("Donut Hole", "Pumpkin", 0));
+
+        return donuts;
     }
 }
