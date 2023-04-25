@@ -7,25 +7,38 @@
     android:paddingTop="10dp"
     android:paddingBottom="10dp" >
 
-    <ImageView
-        android:id="@+id/item_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
-
     <TextView
         android:id="@+id/item_name"
-        android:layout_width="0dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1" />
+        android:paddingLeft="20dp" />
 
     <Button
         android:id="@+id/message_button"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:textSize="11sp"
+        android:paddingLeft="20dp"
+        android:paddingRight="10dp"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        />
+
+    <TextView
+        android:id="@+id/item_count"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" />
+
+    <Button
+        android:id="@+id/message_buttonAdd"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="20dp"
+        android:textSize="20sp"
+        android:textAlignment="center"
         />
 
 </LinearLayout>
