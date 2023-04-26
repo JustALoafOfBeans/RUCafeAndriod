@@ -50,7 +50,7 @@
     <string name="export">Export Orders</string>
 
     <string-array name="itemNames">
-        <item>Chocolate glaze</item>
+        <item>Chocolate Glaze</item>
         <item>Strawberry Glaze</item>
         <item>Boston Cream</item>
         <item>Cookies &amp; Cream</item>
@@ -59,9 +59,9 @@
         <item>Blueberry</item>
         <item>Chocolate</item>
         <item>Matcha</item>
-        <item>Chocolate</item>
+        <item>Brownie</item>
         <item>Glazed</item>
-        <item>Donut Hole</item>
+        <item>Pumpkin</item>
     </string-array>
 
 </resources>

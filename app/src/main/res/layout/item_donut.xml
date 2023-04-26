@@ -23,76 +23,97 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="100dp"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
                     android:id="@+id/im_image"
-                    android:layout_width="130dp"
-                    android:layout_height="130dp"
-                    android:layout_marginStart="20dp"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_gravity="center"
                     tools:srcCompat="@tools:sample/avatars" />
+
+                <LinearLayout
+                    android:layout_width="185dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_flavor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="135dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="0dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:textSize="15sp" />
+
+                    <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop = "-10dp">
+
+                        <Button
+                            android:id="@+id/btn_remove"
+                            android:layout_width="40dp"
+                            android:layout_height="45dp"
+                            android:layout_marginStart="0dp"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                        <TextView
+                            android:id="@+id/tv_count"
+                            android:layout_width="42dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:textColor="@color/black"
+                            android:gravity="center"
+                            android:textSize="15sp" />
+
+                        <Button
+                            android:id="@+id/btn_add"
+                            android:layout_width="40dp"
+                            android:layout_height="45dp"
+                            android:layout_marginStart="7dp"
+                            tools:ignore="TouchTargetSizeCheck" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/btntext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginTop="-55dp"
+                        android:textColor="@color/white"
+                        android:textSize="25sp"
+                        android:text="—             +" />
+                </LinearLayout>
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_flavor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="55dp"
-                android:layout_marginTop="24dp"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_flavor"
-                app:layout_constraintTop_toBottomOf="@+id/tv_flavor" />
-
-            <Button
-                android:id="@+id/btn_remove"
-                android:layout_width="47dp"
-                android:layout_height="43dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginBottom="32dp"
-                android:text="--"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tv_price"
-                app:layout_constraintTop_toTopOf="@+id/tv_price"
-                tools:ignore="TouchTargetSizeCheck" />
-
-            <TextView
-                android:id="@+id/tv_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="@+id/btn_remove"
-                app:layout_constraintTop_toBottomOf="@+id/tv_flavor" />
-
-            <Button
-                android:id="@+id/btn_add"
-                android:layout_width="47dp"
-                android:layout_height="43dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginBottom="32dp"
-                android:text="+"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tv_count"
-                app:layout_constraintTop_toTopOf="@+id/tv_price"
-                tools:ignore="TouchTargetSizeCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

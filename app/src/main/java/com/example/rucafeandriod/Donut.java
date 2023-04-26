@@ -74,13 +74,13 @@ public class Donut extends MenuItem{
      * @return Price as a double, formatted to two decimal places
      */
     public double itemPrice() {
-        switch ("Yeast Donut")  {
+        switch (type)  {
             case "Yeast Donut":
-                return Double.valueOf(DF.format(Prices.YEAST.val*quantity));
+                return Double.parseDouble(DF.format(Prices.YEAST.val));
             case "Cake Donut":
-                return Double.valueOf(DF.format(Prices.CAKE.val*quantity));
+                return Double.parseDouble(DF.format(Prices.CAKE.val));
             case "Donut Hole":
-                return Double.valueOf(DF.format(Prices.HOLE.val*quantity));
+                return Double.parseDouble(DF.format(Prices.HOLE.val));
             default:
                 return ERROR;
         }
@@ -124,7 +124,7 @@ public class Donut extends MenuItem{
 
     // Returns String format with no quantity for menu list
     public String toStringMenu() {
-        return type + " (" + flavor + ")";
+        return type + "\n(" + flavor + ")";
     }
 
     /**

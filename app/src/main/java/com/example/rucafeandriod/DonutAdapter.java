@@ -47,7 +47,8 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
     public void onBindViewHolder(@NonNull ItemsHolder holder, int position) {
         //assign values for each row
         holder.flavor.setText(items.get(position).toStringMenu());
-        holder.price.setText(String.valueOf(items.get(position).itemPrice()));
+        holder.price.setText("$" + String.valueOf(items.get(position).itemPrice()));
+        holder.count.setText(String.valueOf(items.get(position).getQuantity()));
         holder.image.setImageResource(items.get(position).getImage());
     }
 
@@ -64,7 +65,7 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
      * Get the views from the row layout file, similar to the onCreate() method.
      */
     public static class ItemsHolder extends RecyclerView.ViewHolder {
-        private TextView flavor, price;
+        private TextView flavor, price, count;
         private ImageView image;
         private Button add, rem;
         private ConstraintLayout parentLayout; //this is the row layout
@@ -73,6 +74,7 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
             super(itemView);
             flavor = itemView.findViewById(R.id.tv_flavor);
             price = itemView.findViewById(R.id.tv_price);
+            count = itemView.findViewById(R.id.tv_count);
             image = itemView.findViewById(R.id.im_image);
             add = itemView.findViewById(R.id.btn_add);
             rem = itemView.findViewById(R.id.btn_remove);
