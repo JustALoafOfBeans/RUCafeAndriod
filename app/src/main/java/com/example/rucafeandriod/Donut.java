@@ -23,6 +23,9 @@ public class Donut extends MenuItem{
      * Flavor of donut selected, options vary with type
      */
     private String flavor;
+
+    private int image;
+
     /**
      * Initial size constant
      */
@@ -39,14 +42,31 @@ public class Donut extends MenuItem{
 
     /**
      * Constructor for Donut class
-     * @param type type of donut treat String
-     * @param fla flavor of donut as a String
-     * @param num quantity of donuts added
      */
-    public Donut(String type, String fla, int num) {
-        this.type = type;
-        this.quantity = num;
+    public Donut(String fla, int image) {
+        this.quantity = INIT;
+        this.image = image;
         this.flavor = fla;
+        switch(flavor) {
+            case "Chocolate Glaze":
+            case "Strawberry Glaze":
+            case "Boston Cream":
+            case "Cookies & Cream":
+            case "Raspberry Glaze":
+                this.type = "Yeast Donut";
+                break;
+            case "Lemon":
+            case "Blueberry":
+            case "Chocolate":
+            case "Matcha":
+                this.type = "Cake Donut";
+                break;
+            case "Brownie":
+            case "Glazed":
+            case "Pumpkin":
+                this.type = "Donut Hole";
+                break;
+        }
     }
 
     /**
@@ -54,7 +74,7 @@ public class Donut extends MenuItem{
      * @return Price as a double, formatted to two decimal places
      */
     public double itemPrice() {
-        switch (type)  {
+        switch ("Yeast Donut")  {
             case "Yeast Donut":
                 return Double.valueOf(DF.format(Prices.YEAST.val*quantity));
             case "Cake Donut":
@@ -129,6 +149,10 @@ public class Donut extends MenuItem{
      */
     public int getQuantity() {
         return quantity;
+    }
+
+    public int getImage() {
+        return image;
     }
 
     /**

@@ -48,4 +48,20 @@
     <string name="order_num">Order Number</string>
     <string name="cancel">Cancel Order</string>
     <string name="export">Export Orders</string>
+
+    <string-array name="itemNames">
+        <item>Chocolate glaze</item>
+        <item>Strawberry Glaze</item>
+        <item>Boston Cream</item>
+        <item>Cookies &amp; Cream</item>
+        <item>Raspberry Glaze</item>
+        <item>Lemon</item>
+        <item>Blueberry</item>
+        <item>Chocolate</item>
+        <item>Matcha</item>
+        <item>Chocolate</item>
+        <item>Glazed</item>
+        <item>Donut Hole</item>
+    </string-array>
+
 </resources>
