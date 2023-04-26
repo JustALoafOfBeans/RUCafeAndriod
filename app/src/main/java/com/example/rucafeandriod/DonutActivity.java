@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -16,11 +17,16 @@ public class DonutActivity extends AppCompatActivity {
             R.drawable.cake_lemon, R.drawable.cake_blueberry, R.drawable.cake_chocolate, R.drawable.cake_matcha,
             R.drawable.hole_chocolate, R.drawable.hole_glazed, R.drawable.hole_pumpkin};
 
+    private TextView subtotalText;
+    private double subtotal;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.donut_select_recycle);
         RecyclerView rcview = findViewById(R.id.rvDonuts);
+        subtotal = 0.0;
+        subtotalText = findViewById(R.id.subtotalText);
         setupMenuItems(); //add the list of items to the ArrayList
         // adapter = new DonutAdapter(this, donuts); //create the adapter
         rcview.setAdapter(adapter); //bind the list of items to the RecyclerView
@@ -53,6 +59,7 @@ public class DonutActivity extends AppCompatActivity {
             if (action.equals("Add")) {
                 Donut targetDonut = adapter.getClicked(targeted);
                 System.out.println("Added " + targetDonut.getFlavor());
+                subtotalText.setText("7"); // TODO THIS IS A GAG TEST REMOVE
             } else if (action.equals("Remove")) {
                 Donut targetDonut = adapter.getClicked(targeted);
                 System.out.println("Removed " + targetDonut.getFlavor());
@@ -61,6 +68,17 @@ public class DonutActivity extends AppCompatActivity {
         // Whether add or remove
         public void setAction(String btnAct) {
             action = btnAct;
+        }
+
+        // Price of added item is negative if removed
+        public void updateSubtotal(String changeStr) {
+            Double changeVal = Double.parseDouble(changeStr.substring(1));
+            if (action.equals("Add")) {
+                subtotal += changeVal;
+            } else if (action.equals("Remove")) {
+                subtotal -= changeVal;
+            }
+            System.out.println("subtotal now: " + subtotal);
         }
 
         /*
