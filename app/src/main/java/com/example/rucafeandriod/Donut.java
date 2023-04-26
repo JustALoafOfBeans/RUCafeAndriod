@@ -2,6 +2,7 @@ package com.example.rucafeandriod;
 
 import com.example.rucafeandriod.Prices;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  * of donuts from the RU Cafe
  * @author Victoria Chen, Bridget Zhang
  */
-public class Donut extends MenuItem{
+public class Donut extends MenuItem implements Serializable {
     /**
      * Type of donut item selected (cake, yeast, or hole)
      */
@@ -67,6 +68,14 @@ public class Donut extends MenuItem{
                 this.type = "Donut Hole";
                 break;
         }
+    }
+
+    // Used by DonutAdapter to create duplicate
+    public Donut (String flav, int image, String type, int quant) {
+        this.flavor = flav;
+        this.image = image;
+        this.type = type;
+        this.quantity = quant;
     }
 
     /**

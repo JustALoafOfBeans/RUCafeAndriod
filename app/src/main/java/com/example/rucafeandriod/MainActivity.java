@@ -41,10 +41,15 @@ public class MainActivity extends AppCompatActivity {
                     Order toAdd = (Order) result.getData().getSerializableExtra("o");
                     addToStoreOrders(toAdd);
                     itemsInBasket.clear();
+                    System.out.println("Success");
+                } else if (result.getData() != null && result.getData().getSerializableExtra("d") != null) {
+                    ArrayList<Donut> bag = (ArrayList<Donut>) result.getData().getSerializableExtra("d");
+                    addDonut(bag);
                 }
             }
         }
     });
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +74,13 @@ public class MainActivity extends AppCompatActivity {
             itemsInBasket = new ArrayList<>();
         }
         itemsInBasket.add(toAdd);
+    }
+
+    private void addDonut(ArrayList<Donut> toAdd) {
+        if (itemsInBasket == null) {
+            itemsInBasket = new ArrayList<>();
+        }
+        itemsInBasket.addAll(toAdd);
     }
 
     private void instantiateButtons() {

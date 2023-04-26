@@ -43,6 +43,17 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
         return items.get(position);
     }
 
+    public static ArrayList<Donut> getOrder() {
+        ArrayList<Donut> order = new ArrayList<>();
+        for (Donut d : items) {
+            if (d.getQuantity() > 0) {
+                Donut dNew = new Donut(d.getFlavor(), d.getImage(), d.getType(), d.getQuantity());
+                order.add(dNew);
+            }
+        }
+        return order;
+    }
+
     /**
      * Assign data values for each row according to their "position" (index) when the item becomes
      * visible on the screen.
