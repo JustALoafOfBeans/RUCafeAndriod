@@ -109,12 +109,12 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
          * @param itemView
          */
         private void setAddButtonOnClick(@NonNull View itemView) {
-            add.setTag(1);
             add.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int index = getClickedPosition(flavor.getText().toString());
                     if (onClickListener != null) {
+                        onClickListener.setAction("Add");
                         onClickListener.onItemClicked(index);
                     }
                     //int index = (int) view.getTag();
@@ -144,7 +144,12 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
             rem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    AlertDialog.Builder alert = new AlertDialog.Builder(itemView.getContext());
+                    int index = getClickedPosition(flavor.getText().toString());
+                    if (onClickListener != null) {
+                        onClickListener.setAction("Remove");
+                        onClickListener.onItemClicked(index);
+                    }
+                    /*AlertDialog.Builder alert = new AlertDialog.Builder(itemView.getContext());
                     alert.setTitle("Remove from order");
                     alert.setMessage(flavor.getText().toString());
                     //handle the "YES" click
@@ -161,7 +166,7 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
                         }
                     });
                     AlertDialog dialog = alert.create();
-                    dialog.show();
+                    dialog.show();*/
                 }
             });
         }

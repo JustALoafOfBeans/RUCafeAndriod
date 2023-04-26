@@ -45,11 +45,29 @@ public class DonutActivity extends AppCompatActivity {
     }
 
     private OnItemClickListener listener = new OnItemClickListener() {
-        public void onItemClicked(int added) {
+        String action;
+
+        // Called by Adapter, gives index of clicked item
+        public void onItemClicked(int targeted) {
             //do whatever you want with donut
-            Donut addedDonut = adapter.getClicked(added);
-            System.out.println("Added " + addedDonut.getFlavor());
+            if (action.equals("Add")) {
+                Donut targetDonut = adapter.getClicked(targeted);
+                System.out.println("Added " + targetDonut.getFlavor());
+            } else if (action.equals("Remove")) {
+                Donut targetDonut = adapter.getClicked(targeted);
+                System.out.println("Removed " + targetDonut.getFlavor());
+            }
         }
+        // Whether add or remove
+        public void setAction(String btnAct) {
+            action = btnAct;
+        }
+
+        /*
+        * On click, the following should happen:
+        * - Count checks (Can't remove below 0, OPTIONAL: can't add above [some num])
+        * - Update subtotal
+        * */
     };
 
     //creation of adapter
