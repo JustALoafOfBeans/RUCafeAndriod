@@ -1,12 +1,13 @@
 package com.example.rucafeandriod;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Class that represents a finalized order as a number and the items within it
  * @author Victoria Chen, Bridget Zhang
  */
-public class Order {
+public class Order implements Serializable {
     /**
      * Number assigned to the order that identifies it
      */

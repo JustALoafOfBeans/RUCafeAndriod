@@ -52,6 +52,7 @@
             android:layout_height="20dp" />
 
         <ListView
+            android:id="@+id/store_orders_display"
             android:layout_width="match_parent"
             android:layout_height="350dp" />
     </LinearLayout>
