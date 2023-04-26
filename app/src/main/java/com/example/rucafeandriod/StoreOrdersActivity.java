@@ -3,6 +3,8 @@ package com.example.rucafeandriod;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -12,8 +14,8 @@ import java.util.ArrayList;
 public class StoreOrdersActivity extends AppCompatActivity {
     private ArrayList<Integer> orderNums = new ArrayList<>();
     private ListView ordersDisplay;
-    public static ArrayList<Order> currentStoreOrders;
     private Spinner orderNumsSpinner;
+    public static ArrayList<Order> currentStoreOrders;
     private ArrayAdapter<Order> arrayAdapter;
     private ArrayAdapter<MenuItem> arrayAdapter2;
 
@@ -25,6 +27,17 @@ public class StoreOrdersActivity extends AppCompatActivity {
         orderNumsSpinner = (Spinner) findViewById(R.id.order_nums_spinner);
         currentStoreOrders = MainActivity.allOrders;
         displayOrders();
+        orderNumsSpinner.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+
+                        Object item = parent.getItemAtPosition(pos);
+                        System.out.println(item.toString());     //prints the text in spinner item.
+
+                    }
+                    public void onNothingSelected(AdapterView<?> parent) {
+                    }
+                });
     }
 
     private void displayOrders() {
