@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -16,11 +17,16 @@ public class DonutActivity extends AppCompatActivity {
             R.drawable.cake_lemon, R.drawable.cake_blueberry, R.drawable.cake_chocolate, R.drawable.cake_matcha,
             R.drawable.hole_chocolate, R.drawable.hole_glazed, R.drawable.hole_pumpkin};
 
+    private TextView subtotalText;
+    private double subtotal;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.donut_select_recycle);
         RecyclerView rcview = findViewById(R.id.rvDonuts);
+        subtotal = 0.0;
+        subtotalText = findViewById(R.id.subtotalText);
         setupMenuItems(); //add the list of items to the ArrayList
         // adapter = new DonutAdapter(this, donuts); //create the adapter
         rcview.setAdapter(adapter); //bind the list of items to the RecyclerView
@@ -45,11 +51,69 @@ public class DonutActivity extends AppCompatActivity {
     }
 
     private OnItemClickListener listener = new OnItemClickListener() {
-        public void onItemClicked(int added) {
+        String action;
+        int newCount; // New count to be retrieved for text
+
+        // Called by Adapter, gives index of clicked item
+        public void onItemClicked(int targeted) {
+            // Find the donut object being modified in ArrayList "donuts"
+            // Set action
+            // Check quantity bounds (not 0 if REM, not 10 if ADD)
+            // --> print error if bad boundary
+            // Otherwise, update quantity for that donut object
+            // Final "Place order" consisting of donut objects with quantity>0
+
             //do whatever you want with donut
-            Donut addedDonut = adapter.getClicked(added);
-            System.out.println("Added " + addedDonut.getFlavor());
+            if (action.equals("Add")) {
+                Donut targetDonut = adapter.getClicked(targeted);
+                System.out.println("Added " + targetDonut.getFlavor());
+                if (targetDonut.getQuantity() == 10) {
+                    System.out.println("ERROR too many of one flavor");
+                    newCount = 10;
+                } else {
+                    newCount = targetDonut.getQuantity() + 1;
+                    targetDonut.setQuantity(newCount);
+                }
+                System.out.println("New count: " + targetDonut.getQuantity());
+            } else if (action.equals("Remove")) {
+                Donut targetDonut = adapter.getClicked(targeted);
+                System.out.println("Removed " + targetDonut.getFlavor());
+                if (targetDonut.getQuantity() == 0) {
+                    newCount = 0;
+                    System.out.println("ERROR can't have neg donuts");
+                } else {
+                    newCount = targetDonut.getQuantity() - 1;
+                    targetDonut.setQuantity(newCount);
+                }
+                System.out.println("New count: " + targetDonut.getQuantity());
+            }
         }
+        // Whether add or remove
+        public void setAction(String btnAct) {
+            action = btnAct;
+        }
+
+        // Price of added item is negative if removed
+        public void updateSubtotal(String changeStr) {
+            Double changeVal = Double.parseDouble(changeStr.substring(1));
+            if (action.equals("Add")) {
+                subtotal += changeVal;
+            } else if (action.equals("Remove")) {
+                subtotal -= changeVal;
+            }
+            System.out.println("subtotal now: " + subtotal);
+        }
+
+        // Returns new count
+        public int returnCount() {
+            return newCount;
+        }
+
+        /*
+        * On click, the following should happen:
+        * - Count checks (Can't remove below 0, OPTIONAL: can't add above [some num])
+        * - Update subtotal
+        * */
     };
 
     //creation of adapter

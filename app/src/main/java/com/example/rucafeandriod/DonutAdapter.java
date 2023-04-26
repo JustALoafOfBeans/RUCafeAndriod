@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
@@ -22,6 +23,7 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
     private static ArrayList<Donut> items; //need the data binding to each row of RecyclerView
 
     private static OnItemClickListener onClickListener;
+    private static final DecimalFormat DF = new DecimalFormat("0.00");
 
     public DonutAdapter(Context context, ArrayList<Donut> items, OnItemClickListener listener) {
         this.context = context;
@@ -109,34 +111,16 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
          * @param itemView
          */
         private void setAddButtonOnClick(@NonNull View itemView) {
-            add.setTag(1);
             add.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int index = getClickedPosition(flavor.getText().toString());
                     if (onClickListener != null) {
-                        onClickListener.onItemClicked(index);
+                        onClickListener.setAction("Add");
+                        onClickListener.updateSubtotal(price.getText().toString()); // Update subtotal
+                        onClickListener.onItemClicked(index); // Process amounts
+                        count.setText(Integer.toString(onClickListener.returnCount())); // TOOD GAG
                     }
-                    //int index = (int) view.getTag();
-                    //onClickListener.onItemClicked(index);
-                    /*AlertDialog.Builder alert = new AlertDialog.Builder(itemView.getContext());
-                    alert.setTitle("Add to order");
-                    alert.setMessage(flavor.getText().toString());
-                    //handle the "YES" click
-                    alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(itemView.getContext(),
-                                    flavor.getText().toString() + " added.", Toast.LENGTH_LONG).show();
-                        }
-                        //handle the "NO" click
-                    }).setNegativeButton("no", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(itemView.getContext(),
-                                    flavor.getText().toString() + " not added.", Toast.LENGTH_LONG).show();
-                        }
-                    });
-                    AlertDialog dialog = alert.create();
-                    dialog.show();*/
                 }
             });
         }
@@ -144,24 +128,13 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
             rem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    AlertDialog.Builder alert = new AlertDialog.Builder(itemView.getContext());
-                    alert.setTitle("Remove from order");
-                    alert.setMessage(flavor.getText().toString());
-                    //handle the "YES" click
-                    alert.setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(itemView.getContext(),
-                                    flavor.getText().toString() + " removed.", Toast.LENGTH_LONG).show();
-                        }
-                        //handle the "NO" click
-                    }).setNegativeButton("no", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(itemView.getContext(),
-                                    flavor.getText().toString() + " not removed.", Toast.LENGTH_LONG).show();
-                        }
-                    });
-                    AlertDialog dialog = alert.create();
-                    dialog.show();
+                    int index = getClickedPosition(flavor.getText().toString());
+                    if (onClickListener != null) {
+                        onClickListener.setAction("Remove");
+                        onClickListener.updateSubtotal(price.getText().toString());
+                        onClickListener.onItemClicked(index);
+                        count.setText(Integer.toString(onClickListener.returnCount()));
+                    }
                 }
             });
         }
