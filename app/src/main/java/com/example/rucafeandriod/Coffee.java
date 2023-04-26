@@ -1,5 +1,11 @@
 package com.example.rucafeandriod;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -8,7 +14,7 @@ import java.util.ArrayList;
  * of coffee from the cafe
  * @author Victoria Chen
  */
-public class Coffee extends MenuItem {
+public class Coffee extends MenuItem implements Serializable {
     /**
      * Initial size constant
      */
@@ -84,4 +90,5 @@ public class Coffee extends MenuItem {
         }
         return item;
     }
+
 }
