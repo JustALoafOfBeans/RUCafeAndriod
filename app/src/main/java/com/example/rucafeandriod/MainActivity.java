@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
      * Single array list to hold all items in basket. Makes it easier so only have to pass one item between activities.
      */
     public static ArrayList<MenuItem> itemsInBasket;
+    public static ArrayList<Order> allOrders;
     private ActivityResultLauncher<Intent> activityResultLaunch = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
         public void onActivityResult(ActivityResult result) {
@@ -35,7 +36,11 @@ public class MainActivity extends AppCompatActivity {
                     Coffee cup = (Coffee) result.getData().getSerializableExtra("c");
                     addCoffee(cup);
                 } else if (result.getData() != null && result.getData().getSerializableExtra("b") != null) { //retrieve updated basket
-                    System.out.println("Success");
+                    itemsInBasket = (ArrayList<MenuItem>) result.getData().getSerializableExtra("b");
+                } else if (result.getData() != null && result.getData().getSerializableExtra("o") != null) {
+                    Order toAdd = (Order) result.getData().getSerializableExtra("o");
+                    addToStoreOrders(toAdd);
+                    itemsInBasket.clear();
                 }
             }
         }
@@ -46,6 +51,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         instantiateButtons();
+    }
+
+    private void addToStoreOrders(Order toAdd) {
+        if (allOrders == null) {
+            allOrders = new ArrayList<>();
+        }
+        allOrders.add(toAdd);
+        for (Order item : allOrders) {
+            System.out.print(item.getNum() + " : ");
+            System.out.println(item.getItems());
+        }
     }
 
     private void addCoffee(Coffee toAdd) {
@@ -105,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void openDonutActivity() {
         Intent donutIntent = new Intent(this, DonutActivity.class);
-        startActivity(donutIntent);
+        activityResultLaunch.launch(donutIntent);
     }
 
     public void openCoffeeActivity() {

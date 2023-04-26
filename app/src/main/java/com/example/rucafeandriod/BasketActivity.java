@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -20,10 +21,11 @@ import java.util.List;
 
 public class BasketActivity extends AppCompatActivity {
     private ListView basketListView;
-    private ArrayList<MenuItem> currentBasket;
+    public static ArrayList<MenuItem> currentBasket;
     private TextView subtotal, tax, total;
-    private AppCompatButton deleteBtn;
+    private AppCompatButton deleteBtn, finalBtn;
     private MenuItem selectedItem;
+    public static int nextOrderNum = 1;
     private ArrayAdapter<MenuItem> arrayAdapter;
     /**
      *  Constant for tax rate in NJ, applied to find tax and total costs
@@ -44,9 +46,18 @@ public class BasketActivity extends AppCompatActivity {
         tax = (TextView) findViewById(R.id.tax);
         total = (TextView) findViewById(R.id.total);
         deleteBtn = (AppCompatButton) findViewById(R.id.delete);
+        finalBtn = (AppCompatButton) findViewById(R.id.finalize_button);
         currentBasket = MainActivity.itemsInBasket;
         displayBasket();
         instantiateOnClicks();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent (this, MainActivity.class);
+        intent.putExtra("b", currentBasket);
+        setResult(RESULT_OK,intent);
+        finish();
     }
 
     private void instantiateOnClicks() {
@@ -58,8 +69,21 @@ public class BasketActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(BasketActivity.this, "Please select an item to delete.", Toast.LENGTH_SHORT).show();
                 }
-                //delete item
-                //return update list to main
+            }
+        });
+        finalBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (currentBasket.isEmpty()) {
+                    finish();
+                } else {
+                    Order newOrder = new Order(nextOrderNum, currentBasket);
+                    nextOrderNum++;
+                    Intent intent = new Intent (BasketActivity.this, MainActivity.class);
+                    intent.putExtra("o", newOrder);
+                    setResult(RESULT_OK, intent);
+                    finish();
+                }
             }
         });
         // Maintain last item selected in selectedItem
