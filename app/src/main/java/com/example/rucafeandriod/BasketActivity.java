@@ -1,9 +1,11 @@
 package com.example.rucafeandriod;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -16,6 +18,7 @@ public class BasketActivity extends AppCompatActivity {
     private ListView basketContents;
     private ArrayList<MenuItem> currentBasket;
     private TextView subtotal, tax, total;
+    private AppCompatButton deleteBtn;
     /**
      *  Constant for tax rate in NJ, applied to find tax and total costs
      */
@@ -34,8 +37,21 @@ public class BasketActivity extends AppCompatActivity {
         subtotal = (TextView) findViewById(R.id.subtotal);
         tax = (TextView) findViewById(R.id.tax);
         total = (TextView) findViewById(R.id.total);
+        deleteBtn = (AppCompatButton) findViewById(R.id.delete);
         currentBasket = MainActivity.itemsInBasket;
         displayBasket();
+        instantiateOnClicks();
+    }
+
+    private void instantiateOnClicks() {
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //get selected item from listview
+                //delete item
+                //return update list to main
+            }
+        });
     }
 
     private void displayBasket() {
