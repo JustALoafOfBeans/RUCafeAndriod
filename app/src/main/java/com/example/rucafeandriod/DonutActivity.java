@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+
 
 
 public class DonutActivity extends AppCompatActivity {
@@ -19,6 +21,11 @@ public class DonutActivity extends AppCompatActivity {
 
     private TextView subtotalText;
     private double subtotal;
+
+    private static final int MAX_DONUTS = 10;
+    private static final int MIN_DONUTS = 0;
+
+    private static final DecimalFormat DF = new DecimalFormat("0.00");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +60,7 @@ public class DonutActivity extends AppCompatActivity {
     private OnItemClickListener listener = new OnItemClickListener() {
         String action;
         int newCount; // New count to be retrieved for text
+        boolean boundError;
 
         // Called by Adapter, gives index of clicked item
         public void onItemClicked(int targeted) {
@@ -63,13 +71,15 @@ public class DonutActivity extends AppCompatActivity {
             // Otherwise, update quantity for that donut object
             // Final "Place order" consisting of donut objects with quantity>0
 
+            boundError = false;
             //do whatever you want with donut
             if (action.equals("Add")) {
                 Donut targetDonut = adapter.getClicked(targeted);
                 System.out.println("Added " + targetDonut.getFlavor());
-                if (targetDonut.getQuantity() == 10) {
+                if (targetDonut.getQuantity() == MAX_DONUTS) {
                     System.out.println("ERROR too many of one flavor");
-                    newCount = 10;
+                    newCount = MAX_DONUTS;
+                    boundError = true;
                 } else {
                     newCount = targetDonut.getQuantity() + 1;
                     targetDonut.setQuantity(newCount);
@@ -78,8 +88,9 @@ public class DonutActivity extends AppCompatActivity {
             } else if (action.equals("Remove")) {
                 Donut targetDonut = adapter.getClicked(targeted);
                 System.out.println("Removed " + targetDonut.getFlavor());
-                if (targetDonut.getQuantity() == 0) {
-                    newCount = 0;
+                if (targetDonut.getQuantity() == MIN_DONUTS) {
+                    newCount = MIN_DONUTS;
+                    boundError = true;
                     System.out.println("ERROR can't have neg donuts");
                 } else {
                     newCount = targetDonut.getQuantity() - 1;
@@ -95,13 +106,16 @@ public class DonutActivity extends AppCompatActivity {
 
         // Price of added item is negative if removed
         public void updateSubtotal(String changeStr) {
-            Double changeVal = Double.parseDouble(changeStr.substring(1));
-            if (action.equals("Add")) {
-                subtotal += changeVal;
-            } else if (action.equals("Remove")) {
-                subtotal -= changeVal;
+            if (!boundError) {
+                Double changeVal = Double.parseDouble(changeStr.substring(1));
+                if (action.equals("Add")) {
+                    subtotal += changeVal;
+                } else if (action.equals("Remove")) {
+                    subtotal -= changeVal;
+                }
+                subtotal = Double.valueOf(DF.format(subtotal));
+                subtotalText.setText("Subtotal: $" + subtotal);
             }
-            System.out.println("subtotal now: " + subtotal);
         }
 
         // Returns new count

@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
@@ -23,7 +22,6 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
     private static ArrayList<Donut> items; //need the data binding to each row of RecyclerView
 
     private static OnItemClickListener onClickListener;
-    private static final DecimalFormat DF = new DecimalFormat("0.00");
 
     public DonutAdapter(Context context, ArrayList<Donut> items, OnItemClickListener listener) {
         this.context = context;
@@ -117,8 +115,8 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
                     int index = getClickedPosition(flavor.getText().toString());
                     if (onClickListener != null) {
                         onClickListener.setAction("Add");
-                        onClickListener.updateSubtotal(price.getText().toString()); // Update subtotal
                         onClickListener.onItemClicked(index); // Process amounts
+                        onClickListener.updateSubtotal(price.getText().toString()); // Update subtotal
                         count.setText(Integer.toString(onClickListener.returnCount())); // TOOD GAG
                     }
                 }
@@ -131,8 +129,8 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
                     int index = getClickedPosition(flavor.getText().toString());
                     if (onClickListener != null) {
                         onClickListener.setAction("Remove");
-                        onClickListener.updateSubtotal(price.getText().toString());
                         onClickListener.onItemClicked(index);
+                        onClickListener.updateSubtotal(price.getText().toString());
                         count.setText(Integer.toString(onClickListener.returnCount()));
                     }
                 }
