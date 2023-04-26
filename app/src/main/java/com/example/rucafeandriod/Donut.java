@@ -23,6 +23,9 @@ public class Donut extends MenuItem{
      * Flavor of donut selected, options vary with type
      */
     private String flavor;
+
+    private int image;
+
     /**
      * Initial size constant
      */
@@ -39,14 +42,31 @@ public class Donut extends MenuItem{
 
     /**
      * Constructor for Donut class
-     * @param type type of donut treat String
-     * @param fla flavor of donut as a String
-     * @param num quantity of donuts added
      */
-    public Donut(String type, String fla, int num) {
-        this.type = type;
-        this.quantity = num;
+    public Donut(String fla, int image) {
+        this.quantity = INIT;
+        this.image = image;
         this.flavor = fla;
+        switch(flavor) {
+            case "Chocolate Glaze":
+            case "Strawberry Glaze":
+            case "Boston Cream":
+            case "Cookies & Cream":
+            case "Raspberry Glaze":
+                this.type = "Yeast Donut";
+                break;
+            case "Lemon":
+            case "Blueberry":
+            case "Chocolate":
+            case "Matcha":
+                this.type = "Cake Donut";
+                break;
+            case "Brownie":
+            case "Glazed":
+            case "Pumpkin":
+                this.type = "Donut Hole";
+                break;
+        }
     }
 
     /**
@@ -56,11 +76,24 @@ public class Donut extends MenuItem{
     public double itemPrice() {
         switch (type)  {
             case "Yeast Donut":
-                return Double.valueOf(DF.format(Prices.YEAST.val*quantity));
+                return Double.parseDouble(DF.format(Prices.YEAST.val*quantity));
             case "Cake Donut":
-                return Double.valueOf(DF.format(Prices.CAKE.val*quantity));
+                return Double.parseDouble(DF.format(Prices.CAKE.val*quantity));
             case "Donut Hole":
-                return Double.valueOf(DF.format(Prices.HOLE.val*quantity));
+                return Double.parseDouble(DF.format(Prices.HOLE.val*quantity));
+            default:
+                return ERROR;
+        }
+    }
+
+    public double itemPriceMenu() {
+        switch (type)  {
+            case "Yeast Donut":
+                return Double.parseDouble(DF.format(Prices.YEAST.val));
+            case "Cake Donut":
+                return Double.parseDouble(DF.format(Prices.CAKE.val));
+            case "Donut Hole":
+                return Double.parseDouble(DF.format(Prices.HOLE.val));
             default:
                 return ERROR;
         }
@@ -104,7 +137,7 @@ public class Donut extends MenuItem{
 
     // Returns String format with no quantity for menu list
     public String toStringMenu() {
-        return type + " (" + flavor + ")";
+        return type + "\n(" + flavor + ")";
     }
 
     /**
@@ -129,6 +162,10 @@ public class Donut extends MenuItem{
      */
     public int getQuantity() {
         return quantity;
+    }
+
+    public int getImage() {
+        return image;
     }
 
     /**
