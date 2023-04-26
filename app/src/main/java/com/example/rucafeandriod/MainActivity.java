@@ -35,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
                     Coffee cup = (Coffee) result.getData().getSerializableExtra("c");
                     addCoffee(cup);
                 } else if (result.getData() != null && result.getData().getSerializableExtra("b") != null) { //retrieve updated basket
-                    System.out.println("Success");
+                    itemsInBasket = (ArrayList<MenuItem>) result.getData().getSerializableExtra("b");
+                    System.out.println(itemsInBasket);
                 }
             }
         }

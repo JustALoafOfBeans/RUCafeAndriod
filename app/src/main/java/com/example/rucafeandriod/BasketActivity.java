@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -20,7 +21,7 @@ import java.util.List;
 
 public class BasketActivity extends AppCompatActivity {
     private ListView basketListView;
-    private ArrayList<MenuItem> currentBasket;
+    public static ArrayList<MenuItem> currentBasket;
     private TextView subtotal, tax, total;
     private AppCompatButton deleteBtn;
     private MenuItem selectedItem;
@@ -47,6 +48,14 @@ public class BasketActivity extends AppCompatActivity {
         currentBasket = MainActivity.itemsInBasket;
         displayBasket();
         instantiateOnClicks();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent (this, MainActivity.class);
+        intent.putExtra("b", currentBasket);
+        setResult(RESULT_OK,intent);
+        finish();
     }
 
     private void instantiateOnClicks() {
