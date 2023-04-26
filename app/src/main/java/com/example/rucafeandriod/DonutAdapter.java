@@ -18,11 +18,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
-    private Context context; //need the context to inflate the layout
-    private static ArrayList<Donut> items; //need the data binding to each row of RecyclerView
+    /**
+     * Context that inflates layout
+     */
+    private Context context;
 
+    /**
+     * List of Donut items, data to populate RecyclerView rows
+     */
+    private static ArrayList<Donut> items;
+
+    /**
+     * To handle button clicks
+     */
     private static OnItemClickListener onClickListener;
 
+    /**
+     * Constructor for the DonutAdapter class
+     * @param context context for adapter
+     * @param items ArrayList of Donut items to include
+     * @param listener listener to handle buttons and order
+     */
     public DonutAdapter(Context context, ArrayList<Donut> items, OnItemClickListener listener) {
         this.context = context;
         this.items = items;
@@ -39,10 +55,19 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
         return new ItemsHolder(view);
     }
 
+    /**
+     * Method used to obtain item whose quantity is changed
+     * @param position index of item in items ArrayList
+     * @return Donut object for targeted flavor
+     */
     public static Donut getClicked(int position) {
         return items.get(position);
     }
 
+    /**
+     * Method that returns ArrayList of all donuts in order
+     * @return List of donuts whose quantities are not zero
+     */
     public static ArrayList<Donut> getOrder() {
         ArrayList<Donut> order = new ArrayList<>();
         for (Donut d : items) {
@@ -79,13 +104,25 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
     }
 
     /**
-     * Get the views from the row layout file, similar to the onCreate() method.
+     * Get the views from the row layout file, similar to the onCreate() method
      */
     public static class ItemsHolder extends RecyclerView.ViewHolder {
+        /**
+         * Text UI elements for flavor, price, and quantity of each Donut
+         */
         private TextView flavor, price, count;
+        /**
+         * Image associated with each Donut
+         */
         private ImageView image;
+        /**
+         * Buttons to increase and decrease quantity of each Donut
+         */
         private Button add, rem;
-        private ConstraintLayout parentLayout; //this is the row layout
+        /**
+         * Row layout
+         */
+        private ConstraintLayout parentLayout;
 
         public ItemsHolder(@NonNull View itemView) {
             super(itemView);
@@ -117,7 +154,7 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
         /**
          * Set the onClickListener for the button on each row.
          * Clicking on the button will create an AlertDialog with the options of YES/NO.
-         * @param itemView
+         * @param itemView The item that has been targeted
          */
         private void setAddButtonOnClick(@NonNull View itemView) {
             add.setOnClickListener(new View.OnClickListener() {

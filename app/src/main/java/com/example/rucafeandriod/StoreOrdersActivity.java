@@ -32,7 +32,8 @@ public class StoreOrdersActivity extends AppCompatActivity {
                     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
                         Object item = parent.getItemAtPosition(pos);
-                        System.out.println(item.toString());     //prints the text in spinner item.
+                        System.out.println("Spinner set to " + item.toString());  //prints the text in spinner item.
+                        changeOrder(Integer.parseInt(item.toString()));
 
                     }
                     public void onNothingSelected(AdapterView<?> parent) {
@@ -44,6 +45,7 @@ public class StoreOrdersActivity extends AppCompatActivity {
         Order toDisplay;
         instantiateSpinner();
         int displayID = Integer.parseInt(orderNumsSpinner.getSelectedItem().toString());
+        System.out.println("displayID " + displayID);
         for (Order item : currentStoreOrders) {
             if (item.getNum() == displayID) {
                 arrayAdapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, item.getItems());
@@ -52,6 +54,20 @@ public class StoreOrdersActivity extends AppCompatActivity {
         }
         // case where order not found?
         //todo NEED ONCLICK TO UPDATE LIST WHEN NEW SPINNER VALUE PICKED
+    }
+
+    /**
+     * Changes order displayed
+     * @param orderNum number associated with order to display
+     */
+    private void changeOrder(int orderNum) {
+        for (Order item:currentStoreOrders) {
+            if (item.getNum() == orderNum) {
+                System.out.println("Found order " + orderNum);
+                arrayAdapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, item.getItems());
+                ordersDisplay.setAdapter(arrayAdapter2);
+            }
+        }
     }
 
     private void instantiateSpinner() {

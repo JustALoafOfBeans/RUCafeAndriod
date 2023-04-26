@@ -107,7 +107,9 @@ public class MainActivity extends AppCompatActivity {
         basketButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("Reached 1");
                 openBasketActivity();
+                System.out.println("Reached 1");
             }
         });
 
