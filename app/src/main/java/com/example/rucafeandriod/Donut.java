@@ -76,6 +76,19 @@ public class Donut extends MenuItem{
     public double itemPrice() {
         switch (type)  {
             case "Yeast Donut":
+                return Double.parseDouble(DF.format(Prices.YEAST.val*quantity));
+            case "Cake Donut":
+                return Double.parseDouble(DF.format(Prices.CAKE.val*quantity));
+            case "Donut Hole":
+                return Double.parseDouble(DF.format(Prices.HOLE.val*quantity));
+            default:
+                return ERROR;
+        }
+    }
+
+    public double itemPriceMenu() {
+        switch (type)  {
+            case "Yeast Donut":
                 return Double.parseDouble(DF.format(Prices.YEAST.val));
             case "Cake Donut":
                 return Double.parseDouble(DF.format(Prices.CAKE.val));

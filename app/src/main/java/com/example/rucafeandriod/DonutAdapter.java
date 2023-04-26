@@ -47,7 +47,7 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
     public void onBindViewHolder(@NonNull ItemsHolder holder, int position) {
         //assign values for each row
         holder.flavor.setText(items.get(position).toStringMenu());
-        holder.price.setText("$" + String.valueOf(items.get(position).itemPrice()));
+        holder.price.setText("$" + String.valueOf(items.get(position).itemPriceMenu()));
         holder.count.setText(String.valueOf(items.get(position).getQuantity()));
         holder.image.setImageResource(items.get(position).getImage());
     }
