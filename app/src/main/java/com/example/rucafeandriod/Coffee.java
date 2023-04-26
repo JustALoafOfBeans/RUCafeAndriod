@@ -51,13 +51,13 @@ public class Coffee extends MenuItem {
      */
     public double itemPrice() {
         double price = INIT;
-        if (cupSize.equals("short")) {
+        if (cupSize.equals("Short")) {
             price += Prices.SHORT.val;
-        } else if (cupSize.equals("tall")) {
+        } else if (cupSize.equals("Tall")) {
             price += Prices.TALL.val;
-        } else if (cupSize.equals("grande")) {
+        } else if (cupSize.equals("Grande")) {
             price += Prices.GRANDE.val;
-        } else if (cupSize.equals("venti")) {
+        } else if (cupSize.equals("Venti")) {
             price += Prices.VENTI.val;
         }
         price += Prices.SYRUP.val * addIns.size();
