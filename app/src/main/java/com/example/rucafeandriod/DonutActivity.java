@@ -22,7 +22,7 @@ public class DonutActivity extends AppCompatActivity {
         setContentView(R.layout.donut_select_recycle);
         RecyclerView rcview = findViewById(R.id.rvDonuts);
         setupMenuItems(); //add the list of items to the ArrayList
-        DonutAdapter adapter = new DonutAdapter(this, donuts); //create the adapter
+        // adapter = new DonutAdapter(this, donuts); //create the adapter
         rcview.setAdapter(adapter); //bind the list of items to the RecyclerView
         //use the LinearLayout for the RecyclerView
         rcview.setLayoutManager(new LinearLayoutManager(this));
@@ -43,5 +43,16 @@ public class DonutActivity extends AppCompatActivity {
             donuts.add(new Donut(itemNames[i], itemImages[i]));
         }
     }
+
+    private OnItemClickListener listener = new OnItemClickListener() {
+        public void onItemClicked(int added) {
+            //do whatever you want with donut
+            Donut addedDonut = adapter.getClicked(added);
+            System.out.println("Added " + addedDonut.getFlavor());
+        }
+    };
+
+    //creation of adapter
+    DonutAdapter adapter = new DonutAdapter(this, donuts, listener);
 
 }

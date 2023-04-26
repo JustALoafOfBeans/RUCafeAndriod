@@ -3,7 +3,6 @@ package com.example.rucafeandriod;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +19,14 @@ import java.util.ArrayList;
 
 class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
     private Context context; //need the context to inflate the layout
-    private ArrayList<Donut> items; //need the data binding to each row of RecyclerView
+    private static ArrayList<Donut> items; //need the data binding to each row of RecyclerView
 
-    public DonutAdapter(Context context, ArrayList<Donut> items) {
+    private static OnItemClickListener onClickListener;
+
+    public DonutAdapter(Context context, ArrayList<Donut> items, OnItemClickListener listener) {
         this.context = context;
         this.items = items;
+        this.onClickListener = listener;
     }
 
     @NonNull
@@ -35,6 +37,10 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
         View view = inflater.inflate(R.layout.item_donut, parent, false);
 
         return new ItemsHolder(view);
+    }
+
+    public static Donut getClicked(int position) {
+        return items.get(position);
     }
 
     /**
@@ -83,16 +89,37 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
             setRemButtonOnClick(itemView);
         }
 
+        private int getClickedPosition(String clicked) {
+            String donutClicked = clicked.substring(clicked.indexOf("(") + 1);
+            donutClicked = donutClicked.substring(0, donutClicked.indexOf(")"));
+
+            int pos = 0;
+            for (Donut donut : items) {
+                if (donut.getFlavor().equals(donutClicked)) {
+                    return pos;
+                }
+                pos += 1;
+            }
+            return -1;
+        }
+
         /**
          * Set the onClickListener for the button on each row.
          * Clicking on the button will create an AlertDialog with the options of YES/NO.
          * @param itemView
          */
         private void setAddButtonOnClick(@NonNull View itemView) {
+            add.setTag(1);
             add.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    AlertDialog.Builder alert = new AlertDialog.Builder(itemView.getContext());
+                    int index = getClickedPosition(flavor.getText().toString());
+                    if (onClickListener != null) {
+                        onClickListener.onItemClicked(index);
+                    }
+                    //int index = (int) view.getTag();
+                    //onClickListener.onItemClicked(index);
+                    /*AlertDialog.Builder alert = new AlertDialog.Builder(itemView.getContext());
                     alert.setTitle("Add to order");
                     alert.setMessage(flavor.getText().toString());
                     //handle the "YES" click
@@ -109,7 +136,7 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
                         }
                     });
                     AlertDialog dialog = alert.create();
-                    dialog.show();
+                    dialog.show();*/
                 }
             });
         }
