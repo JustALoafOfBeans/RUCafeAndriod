@@ -6,4 +6,6 @@ public interface OnItemClickListener {
     void setAction(String btnAct);
 
     void updateSubtotal(String difference);
+
+    int returnCount();
 }

@@ -117,8 +117,9 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
                     int index = getClickedPosition(flavor.getText().toString());
                     if (onClickListener != null) {
                         onClickListener.setAction("Add");
-                        onClickListener.updateSubtotal(price.getText().toString());
-                        onClickListener.onItemClicked(index);
+                        onClickListener.updateSubtotal(price.getText().toString()); // Update subtotal
+                        onClickListener.onItemClicked(index); // Process amounts
+                        count.setText(Integer.toString(onClickListener.returnCount())); // TOOD GAG
                     }
                 }
             });
@@ -132,6 +133,7 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
                         onClickListener.setAction("Remove");
                         onClickListener.updateSubtotal(price.getText().toString());
                         onClickListener.onItemClicked(index);
+                        count.setText(Integer.toString(onClickListener.returnCount()));
                     }
                 }
             });

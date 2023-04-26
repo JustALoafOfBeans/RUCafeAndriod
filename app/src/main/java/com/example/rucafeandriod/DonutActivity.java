@@ -52,17 +52,40 @@ public class DonutActivity extends AppCompatActivity {
 
     private OnItemClickListener listener = new OnItemClickListener() {
         String action;
+        int newCount; // New count to be retrieved for text
 
         // Called by Adapter, gives index of clicked item
         public void onItemClicked(int targeted) {
+            // Find the donut object being modified in ArrayList "donuts"
+            // Set action
+            // Check quantity bounds (not 0 if REM, not 10 if ADD)
+            // --> print error if bad boundary
+            // Otherwise, update quantity for that donut object
+            // Final "Place order" consisting of donut objects with quantity>0
+
             //do whatever you want with donut
             if (action.equals("Add")) {
                 Donut targetDonut = adapter.getClicked(targeted);
                 System.out.println("Added " + targetDonut.getFlavor());
-                subtotalText.setText("7"); // TODO THIS IS A GAG TEST REMOVE
+                if (targetDonut.getQuantity() == 10) {
+                    System.out.println("ERROR too many of one flavor");
+                    newCount = 10;
+                } else {
+                    newCount = targetDonut.getQuantity() + 1;
+                    targetDonut.setQuantity(newCount);
+                }
+                System.out.println("New count: " + targetDonut.getQuantity());
             } else if (action.equals("Remove")) {
                 Donut targetDonut = adapter.getClicked(targeted);
                 System.out.println("Removed " + targetDonut.getFlavor());
+                if (targetDonut.getQuantity() == 0) {
+                    newCount = 0;
+                    System.out.println("ERROR can't have neg donuts");
+                } else {
+                    newCount = targetDonut.getQuantity() - 1;
+                    targetDonut.setQuantity(newCount);
+                }
+                System.out.println("New count: " + targetDonut.getQuantity());
             }
         }
         // Whether add or remove
@@ -79,6 +102,11 @@ public class DonutActivity extends AppCompatActivity {
                 subtotal -= changeVal;
             }
             System.out.println("subtotal now: " + subtotal);
+        }
+
+        // Returns new count
+        public int returnCount() {
+            return newCount;
         }
 
         /*
