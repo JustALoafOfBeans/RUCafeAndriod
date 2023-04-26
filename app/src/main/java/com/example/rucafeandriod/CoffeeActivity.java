@@ -3,6 +3,7 @@ package com.example.rucafeandriod;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class CoffeeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -29,7 +31,6 @@ public class CoffeeActivity extends AppCompatActivity implements AdapterView.OnI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.coffee_select);
-
         // Link features
         sCream = (CheckBox) findViewById(R.id.sweet_cream);
         fVanilla = (CheckBox) findViewById(R.id.french_vanilla);
@@ -46,6 +47,10 @@ public class CoffeeActivity extends AppCompatActivity implements AdapterView.OnI
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), makeCoffee().toString() + " added to order", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent();
+                intent.putExtra("c", makeCoffee());
+                setResult(RESULT_OK, intent);
+                finish();
             }
         });
 
@@ -54,7 +59,6 @@ public class CoffeeActivity extends AppCompatActivity implements AdapterView.OnI
         coffee_radio_group.clearCheck();
         RadioButton defaultSize = (RadioButton) findViewById(R.id.short_btn);
         defaultSize.setChecked(true);
-
         // Set up spinner for quantities
         Spinner quantityList = (Spinner) findViewById(R.id.spinner2);
         quantityList.setOnItemSelectedListener(this);
