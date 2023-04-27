@@ -52,7 +52,6 @@ public class Coffee extends MenuItem implements Serializable {
 
     /**
      * Method that returns coffee price based on amount, size, and add-ins
-     *
      * @return Price as a double formatted to two decimal places
      */
     public double itemPrice() {

@@ -27,10 +27,10 @@ public class MainActivity extends AppCompatActivity {
      */
     public static ArrayList<MenuItem> itemsInBasket;
     public static ArrayList<Order> allOrders;
-    private ActivityResultLauncher<Intent> activityResultLaunch = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+    private ActivityResultLauncher<Intent> activityResultLaunch = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
         @Override
         public void onActivityResult(ActivityResult result) {
-            // watched https://www.youtube.com/watch?v=Ke9PaRdMcgc
             if (result != null && result.getResultCode() == RESULT_OK) {
                 if(result.getData() != null && result.getData().getSerializableExtra("c") != null) { //retrieve coffee to add
                     Coffee cup = (Coffee) result.getData().getSerializableExtra("c");
