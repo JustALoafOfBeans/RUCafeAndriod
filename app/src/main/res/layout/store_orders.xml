@@ -75,6 +75,7 @@
             android:background="@color/cream_light"
             android:text="@string/cancel"
             tools:ignore="VisualLintButtonSize" />
+
     </LinearLayout>
 
     <TextView
