@@ -1,6 +1,7 @@
 package com.example.rucafeandriod;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,7 @@ public class StoreOrdersActivity extends AppCompatActivity {
     private ListView ordersDisplay;
     private Spinner orderNumsSpinner;
     private TextView orderTotal;
+    private AppCompatButton orderCancel;
     public static ArrayList<Order> currentStoreOrders;
     private ArrayAdapter<Order> arrayAdapter;
     private ArrayAdapter<MenuItem> arrayAdapter2;
@@ -31,6 +33,7 @@ public class StoreOrdersActivity extends AppCompatActivity {
         ordersDisplay = (ListView) findViewById(R.id.store_orders_display);
         orderNumsSpinner = (Spinner) findViewById(R.id.order_nums_spinner);
         orderTotal = (TextView) findViewById(R.id.store_total);
+        orderCancel = (AppCompatButton) findViewById(R.id.delete);
         currentStoreOrders = MainActivity.allOrders;
         displayOrders();
         orderNumsSpinner.setOnItemSelectedListener(
@@ -43,8 +46,24 @@ public class StoreOrdersActivity extends AppCompatActivity {
 
                     }
                     public void onNothingSelected(AdapterView<?> parent) {
+                        displayEmpty();
                     }
                 });
+        orderCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int selected = Integer.parseInt(orderNumsSpinner.getSelectedItem().toString());
+                System.out.println("Attempting to delete order #" + selected);
+                deleteOrder(selected);
+            }
+        });
+    }
+
+    private void displayEmpty() {
+        // todo untested so far, meant to fill in with delete orders
+        ArrayList<MenuItem> noOrder = new ArrayList<>();
+        arrayAdapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, noOrder);
+        orderTotal.setText("@strings/total_default");
     }
 
     /**
@@ -89,6 +108,18 @@ public class StoreOrdersActivity extends AppCompatActivity {
                 orderTotal.setText(calculateTotal(item));
             }
         }
+    }
+
+    private void deleteOrder(int orderNum) {
+        Order remOrder = null; // Order to remove
+        for (Order ord : currentStoreOrders) {
+            remOrder = ord;
+        }
+        if (remOrder != null) {
+            currentStoreOrders.remove(remOrder);
+        }
+        orderNums.clear();
+        displayOrders();
     }
 
     private void instantiateSpinner() {

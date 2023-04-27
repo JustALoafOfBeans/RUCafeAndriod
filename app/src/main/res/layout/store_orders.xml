@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e8dbc8"
+    android:background="@color/cream_dark"
     tools:context=".StoreOrdersActivity">
 
     <TextView
@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
-        android:background="#faf0e1"
+        android:background="@color/cream_light"
         android:orientation="vertical"
         android:paddingTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +71,7 @@
             android:id="@+id/delete"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:background="#F9EFE0"
+            android:background="@color/cream_light"
             android:text="@string/cancel"
             tools:ignore="VisualLintButtonSize" />
 
@@ -84,7 +84,7 @@
             android:id="@+id/finalize_button"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:background="#F9EFE0"
+            android:background="@color/cream_light"
             android:text="@string/export"
             tools:ignore="VisualLintButtonSize" />
     </LinearLayout>
