@@ -19,13 +19,42 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Controls the Basket Activity page. Allows for manipulation of items in the current basket.
+ * @author Victoria Chen
+ */
 public class BasketActivity extends AppCompatActivity {
+    /**
+     * List view to display the items in the current basket
+     */
     private ListView basketListView;
+    /**
+     * Array list containing the objects in the current basket
+     */
     public static ArrayList<MenuItem> currentBasket;
+    /**
+     * Instantiate text views
+     */
     private TextView subtotal, tax, total;
+    /**
+     * Instantiate buttons
+     */
     private AppCompatButton deleteBtn, finalBtn;
+    /**
+     * Contains the currently selected item in the current basket
+     */
     private MenuItem selectedItem;
+    /**
+     * Static integer to start the order numbers
+     */
     public static int nextOrderNum = 1;
+    /**
+     * Static integer zero
+     */
+    public static int INIT = 0;
+    /**
+     * Array adapter to update the list view
+     */
     private ArrayAdapter<MenuItem> arrayAdapter;
     /**
      *  Constant for tax rate in NJ, applied to find tax and total costs
@@ -37,6 +66,14 @@ public class BasketActivity extends AppCompatActivity {
      */
     private static final DecimalFormat DF = new DecimalFormat("0.00");
 
+    /**
+     * Runs on creation of the activity. Instantiates the views on the page and sets up for further
+     * usage.
+     * @param savedInstanceState If the activity is being re-initialized after
+     *     previously being shut down then this Bundle contains the data it most
+     *     recently supplied in {@link #onSaveInstanceState}.  <b><i>Note: Otherwise it is null.</i></b>
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +89,9 @@ public class BasketActivity extends AppCompatActivity {
         instantiateOnClicks();
     }
 
+    /**
+     * Runs when back button is pressed. Sends updated current basket to MainActivity.
+     */
     @Override
     public void onBackPressed() {
         Intent intent = new Intent (this, MainActivity.class);
@@ -60,6 +100,9 @@ public class BasketActivity extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * Instatiates the on click listeners
+     */
     private void instantiateOnClicks() {
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +140,9 @@ public class BasketActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Raises an alert when user deletes an item from the basket
+     */
     private void raiseAlert() {
         new AlertDialog.Builder(this)
                 .setTitle("Delete item")
@@ -115,6 +161,9 @@ public class BasketActivity extends AppCompatActivity {
                 .show();
     }
 
+    /**
+     * Displays the current contents of the basket to the activity
+     */
     private void displayBasket() {
         if (currentBasket != null) {
             arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, currentBasket);
@@ -123,8 +172,11 @@ public class BasketActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Updates the totals on the page
+     */
     private void updateTotals() {
-        double sum = 0;
+        double sum = INIT;
         for (MenuItem item : currentBasket){
             sum += item.itemPrice();
         }
