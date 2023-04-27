@@ -24,9 +24,10 @@ public class Donut extends MenuItem implements Serializable {
      * Flavor of donut selected, options vary with type
      */
     private String flavor;
-
+    /**
+     * Image associated with donut flavor and type
+     */
     private int image;
-
     /**
      * Initial size constant
      */
@@ -70,7 +71,14 @@ public class Donut extends MenuItem implements Serializable {
         }
     }
 
-    // Used by DonutAdapter to create duplicate
+    /**
+     * Secondary constructor given all values
+     * Used by Adapter to store duplicate in order list
+     * @param flav flavor of donut as String
+     * @param image image associated with donut
+     * @param type type of donut: yeast, cake, or hole
+     * @param quant number of donuts of that type
+     */
     public Donut (String flav, int image, String type, int quant) {
         this.flavor = flav;
         this.image = image;
@@ -95,6 +103,10 @@ public class Donut extends MenuItem implements Serializable {
         }
     }
 
+    /**
+     * Method that returns unit price of item (independent of quantity)
+     * Used to generate menu in Adapter
+     */
     public double itemPriceMenu() {
         switch (type)  {
             case "Yeast Donut":
@@ -144,7 +156,11 @@ public class Donut extends MenuItem implements Serializable {
         return quantity + " " + type + " (" + flavor + ")";
     }
 
-    // Returns String format with no quantity for menu list
+    /**
+     * Returns string with no quantity
+     * Used to generate menu
+     * @return menu display String
+     */
     public String toStringMenu() {
         return type + "\n(" + flavor + ")";
     }
