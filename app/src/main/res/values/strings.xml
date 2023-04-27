@@ -12,6 +12,7 @@
     <string name="yeast_donuts">Yeast Donuts</string>
     <string name="hole_donuts">Donut Holes</string>
     <string name="padding"></string>
+    <string name="donut_inc">—             +</string>
 
     <string name="cake_chocolate">Chocolate</string>
     <string name="cake_blueberry">Blueberry</string>
