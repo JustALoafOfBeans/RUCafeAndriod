@@ -16,30 +16,61 @@ import android.widget.Toast;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+/**
+ * Class that manages order review Activity
+ * Called by and returns to MainActivity
+ * @author Victoria Chen, Bridget Zhang
+ */
 public class StoreOrdersActivity extends AppCompatActivity {
+    /**
+     * List of all orders
+     */
     private ArrayList<Integer> orderNums = new ArrayList<>();
+    /**
+     * ListView UI of all orders
+     */
     private ListView ordersDisplay;
+    /**
+     * Dropdown menu to select order number
+     */
     private Spinner orderNumsSpinner;
+    /**
+     * Text UI for total cost of selected order
+     */
     private TextView orderTotal;
+    /**
+     * Button UI to cancel a selected order
+     */
     private AppCompatButton orderCancel;
+    /**
+     * List of all current orders
+     */
     public static ArrayList<Order> currentStoreOrders;
-    private ArrayAdapter<Order> arrayAdapter;
+    /**
+     * ArrayAdapter for all orders
+     */
     private ArrayAdapter<MenuItem> arrayAdapter2;
     /**
      *  Constant for tax rate in NJ, applied to find tax and total costs
      */
     private static final double TAXNJ = 0.06625;
-
+    /**
+     * Double formatting for decimal prices
+     */
     private static final DecimalFormat DF = new DecimalFormat("0.00");
 
+    /**
+     * Method that handles initial setup for Activity
+     * @param savedInstanceState information from previous state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.store_orders);
-        ordersDisplay = (ListView) findViewById(R.id.store_orders_display);
-        orderNumsSpinner = (Spinner) findViewById(R.id.order_nums_spinner);
-        orderTotal = (TextView) findViewById(R.id.store_total);
-        orderCancel = (AppCompatButton) findViewById(R.id.delete);
+        ordersDisplay = findViewById(R.id.store_orders_display);
+        orderNumsSpinner = findViewById(R.id.order_nums_spinner);
+        orderTotal = findViewById(R.id.store_total);
+        orderCancel = findViewById(R.id.delete);
         currentStoreOrders = MainActivity.allOrders;
         displayOrders();
         orderNumsSpinner.setOnItemSelectedListener(
@@ -82,6 +113,10 @@ public class StoreOrdersActivity extends AppCompatActivity {
         return ("$ " + Double.valueOf(DF.format(sum)));
     }
 
+    /**
+     * Method that resets page, displaying first available order
+     * Called for initial setup and when an order is removed
+     */
     private void displayOrders() {
         Order toDisplay;
         instantiateSpinner();
@@ -112,6 +147,10 @@ public class StoreOrdersActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Method that deletes a given order
+     * @param orderNum index of the order to remove
+     */
     private void deleteOrder(int orderNum) {
         Order remOrder = null; // Order to remove
         for (Order ord : currentStoreOrders) {
@@ -130,6 +169,9 @@ public class StoreOrdersActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Method that initializes spinner for order selection
+     */
     private void instantiateSpinner() {
         if (currentStoreOrders != null) {
             for (Order item : currentStoreOrders) {
@@ -143,6 +185,10 @@ public class StoreOrdersActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Method that wraps up and exits current activity
+     * Called when all orders removed
+     */
     private void exitOrders() {
         Intent intent = new Intent (this, MainActivity.class);
         intent.putExtra("ord", currentStoreOrders);
