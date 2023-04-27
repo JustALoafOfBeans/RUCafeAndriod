@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityResultLauncher<Intent> activityResultLaunch = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
         public void onActivityResult(ActivityResult result) {
+            System.out.println("Reached 4");
             // watched https://www.youtube.com/watch?v=Ke9PaRdMcgc
             if (result != null && result.getResultCode() == RESULT_OK) {
                 if(result.getData() != null && result.getData().getSerializableExtra("c") != null) { //retrieve coffee to add
@@ -45,6 +46,11 @@ public class MainActivity extends AppCompatActivity {
                 } else if (result.getData() != null && result.getData().getSerializableExtra("d") != null) {
                     ArrayList<Donut> bag = (ArrayList<Donut>) result.getData().getSerializableExtra("d");
                     addDonut(bag);
+                } else if (result.getData() != null && result.getData().getSerializableExtra("ord") != null) {
+                    System.out.println("Reached 3");
+                    ArrayList<Order> ordersList = (ArrayList<Order>) result.getData().getSerializableExtra("ord");
+                    allOrders.clear();
+                    allOrders = ordersList;
                 }
             }
         }

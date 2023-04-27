@@ -3,6 +3,7 @@ package com.example.rucafeandriod;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -119,7 +120,13 @@ public class StoreOrdersActivity extends AppCompatActivity {
             currentStoreOrders.remove(remOrder);
         }
         orderNums.clear();
-        displayOrders();
+        if (currentStoreOrders.size() == 0) {
+            System.out.println("Reached 1");
+            // Send back to main view // todo reaches both print statements, crashes
+            exitOrders();
+        } else {
+            displayOrders();
+        }
     }
 
     private void instantiateSpinner() {
@@ -129,5 +136,13 @@ public class StoreOrdersActivity extends AppCompatActivity {
         ArrayAdapter ad = new ArrayAdapter(this, android.R.layout.simple_spinner_item, orderNums);
         ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         orderNumsSpinner.setAdapter(ad);
+    }
+
+    private void exitOrders() {
+        System.out.println("Reached 2");
+        Intent intent = new Intent (this, MainActivity.class);
+        intent.putExtra("ord", currentStoreOrders);
+        setResult(RESULT_OK,intent);
+        finish();
     }
 }
