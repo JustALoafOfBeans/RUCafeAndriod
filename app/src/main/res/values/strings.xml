@@ -25,6 +25,8 @@
     <string name="hole_chocolate">Chocolate</string>
     <string name="hole_pumpkin">Pumpkin</string>
     <string name="hole_glazed">Glazed</string>
+    <string name="sign_remove">—</string>
+    <string name="sign_add">+</string>
 
     <string name="coffee_selection">Coffee Selection</string>
     <string name="quantity">Quantity: </string>

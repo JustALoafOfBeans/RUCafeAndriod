@@ -110,7 +110,16 @@
                         android:layout_marginTop="-55dp"
                         android:textColor="@color/white"
                         android:textSize="25sp"
-                        android:text="—             +" />
+                        android:text="@string/sign_remove" />
+                    <TextView
+                        android:id="@+id/btntext2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="107dp"
+                        android:layout_marginTop="-35dp"
+                        android:textColor="@color/white"
+                        android:textSize="25sp"
+                        android:text="@string/sign_add" />
                 </LinearLayout>
             </LinearLayout>
 
