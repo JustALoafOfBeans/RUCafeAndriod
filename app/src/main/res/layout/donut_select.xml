@@ -85,7 +85,7 @@
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/rounded_button"
-                        android:contentDescription="Button to select chocolate cake donut."
+                        android:contentDescription="@string/cake_chocolate"
                         android:foreground="@drawable/cake_chocolate"
                         android:scaleType="centerInside" />
 
@@ -104,7 +104,7 @@
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="20dp"
                         android:background="@drawable/rounded_button"
-                        android:contentDescription="Button to select blueberry cake donut."
+                        android:contentDescription="@string/cake_blueberry"
                         android:foreground="@drawable/cake_blueberry"
                         android:scaleType="centerInside" />
 
@@ -130,7 +130,7 @@
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/rounded_button"
-                        android:contentDescription="Button to select lemon cake donut."
+                        android:contentDescription="@string/cake_lemon"
                         android:foreground="@drawable/cake_lemon"
                         android:scaleType="centerInside" />
 
@@ -149,7 +149,7 @@
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="20dp"
                         android:background="@drawable/rounded_button"
-                        android:contentDescription="Button to select matcha cake donut."
+                        android:contentDescription="@string/cake_matcha"
                         android:foreground="@drawable/cake_matcha"
                         android:scaleType="centerInside" />
 
@@ -193,7 +193,7 @@
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/rounded_button"
-                        android:contentDescription="Button to select cookies and cream yeast donut."
+                        android:contentDescription="@string/yeast_cookie"
                         android:foreground="@drawable/yeast_cookie"
                         android:scaleType="centerInside" />
 
@@ -212,7 +212,7 @@
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="20dp"
                         android:background="@drawable/rounded_button"
-                        android:contentDescription="Button to select chocolate yeast donut."
+                        android:contentDescription="@string/yeast_chocolate"
                         android:foreground="@drawable/yeast_chocolate"
                         android:scaleType="centerInside" />
 
@@ -238,7 +238,7 @@
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/rounded_button"
-                        android:contentDescription="Button to select raspberry yeast donut."
+                        android:contentDescription="@string/yeast_raspberry"
                         android:foreground="@drawable/yeast_raspberry"
                         android:scaleType="centerInside" />
 
@@ -257,7 +257,7 @@
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="20dp"
                         android:background="@drawable/rounded_button"
-                        android:contentDescription="Button to select strawberry yeast donut."
+                        android:contentDescription="@string/yeast_strawberry"
                         android:foreground="@drawable/yeast_strawberry"
                         android:scaleType="centerInside" />
 
@@ -285,7 +285,7 @@
                     android:layout_marginStart="125dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/rounded_button"
-                    android:contentDescription="Button to select boston creme yeast donut"
+                    android:contentDescription="@string/yeast_boston"
                     android:foreground="@drawable/yeast_boston"
                     android:scaleType="centerInside" />
 
@@ -328,7 +328,7 @@
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="10dp"
                         android:background="@drawable/rounded_button"
-                        android:contentDescription="Button to select chocolate hole donut."
+                        android:contentDescription="@string/hole_chocolate"
                         android:foreground="@drawable/hole_chocolate"
                         android:scaleType="centerInside" />
 
@@ -356,7 +356,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/rounded_button"
-                        android:contentDescription="Button to select pumpkin yeast donut."
+                        android:contentDescription="@string/hole_pumpkin"
                         android:foreground="@drawable/hole_pumpkin"
                         android:scaleType="centerInside" />
 
@@ -385,7 +385,7 @@
                     android:layout_marginStart="125dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/rounded_button"
-                    android:contentDescription="Button to select glazed hole donut"
+                    android:contentDescription="@string/hole_glazed"
                     android:foreground="@drawable/hole_glazed"
                     android:scaleType="centerInside" />
 
