@@ -12,7 +12,6 @@
     <string name="yeast_donuts">Yeast Donuts</string>
     <string name="hole_donuts">Donut Holes</string>
     <string name="padding"></string>
-    <string name="donut_inc">—             +</string>
 
     <string name="cake_chocolate">Chocolate</string>
     <string name="cake_blueberry">Blueberry</string>
@@ -26,6 +25,8 @@
     <string name="hole_chocolate">Chocolate</string>
     <string name="hole_pumpkin">Pumpkin</string>
     <string name="hole_glazed">Glazed</string>
+    <string name="sign_remove">—</string>
+    <string name="sign_add">+</string>
 
     <string name="coffee_selection">Coffee Selection</string>
     <string name="quantity">Quantity: </string>
