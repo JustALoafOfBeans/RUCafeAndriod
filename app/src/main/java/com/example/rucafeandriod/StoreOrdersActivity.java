@@ -8,16 +8,21 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class StoreOrdersActivity extends AppCompatActivity {
     private ArrayList<Integer> orderNums = new ArrayList<>();
     private ListView ordersDisplay;
     private Spinner orderNumsSpinner;
+    private TextView orderTotal;
     public static ArrayList<Order> currentStoreOrders;
     private ArrayAdapter<Order> arrayAdapter;
     private ArrayAdapter<MenuItem> arrayAdapter2;
+
+    private static final DecimalFormat DF = new DecimalFormat("0.00");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +30,7 @@ public class StoreOrdersActivity extends AppCompatActivity {
         setContentView(R.layout.store_orders);
         ordersDisplay = (ListView) findViewById(R.id.store_orders_display);
         orderNumsSpinner = (Spinner) findViewById(R.id.order_nums_spinner);
+        orderTotal = (TextView) findViewById(R.id.store_total);
         currentStoreOrders = MainActivity.allOrders;
         displayOrders();
         orderNumsSpinner.setOnItemSelectedListener(
@@ -41,6 +47,19 @@ public class StoreOrdersActivity extends AppCompatActivity {
                 });
     }
 
+    /**
+     * Method that returns the total cost for an order as a String
+     * @param target order for which to calculate cost
+     * @return Total cost of target order
+     */
+    private String calculateTotal(Order target) {
+        double sum = 0;
+        for (MenuItem item : target.getItems()) {
+            sum += item.itemPrice();
+        }
+        return ("$ " + Double.valueOf(DF.format(sum)));
+    }
+
     private void displayOrders() {
         Order toDisplay;
         instantiateSpinner();
@@ -50,6 +69,7 @@ public class StoreOrdersActivity extends AppCompatActivity {
             if (item.getNum() == displayID) {
                 arrayAdapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, item.getItems());
                 ordersDisplay.setAdapter(arrayAdapter2);
+                orderTotal.setText(calculateTotal(item));
             }
         }
         // case where order not found?
@@ -66,6 +86,7 @@ public class StoreOrdersActivity extends AppCompatActivity {
                 System.out.println("Found order " + orderNum);
                 arrayAdapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, item.getItems());
                 ordersDisplay.setAdapter(arrayAdapter2);
+                orderTotal.setText(calculateTotal(item));
             }
         }
     }
