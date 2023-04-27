@@ -74,7 +74,8 @@ public class BasketActivity extends AppCompatActivity {
         finalBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (currentBasket.isEmpty()) {
+                if (currentBasket == null || currentBasket.isEmpty()) {
+                    Toast.makeText(BasketActivity.this, "No orders to add to list.", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
                     Order newOrder = new Order(nextOrderNum, currentBasket);
@@ -115,9 +116,11 @@ public class BasketActivity extends AppCompatActivity {
     }
 
     private void displayBasket() {
-        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, currentBasket);
-        basketListView.setAdapter(arrayAdapter);
-        updateTotals();
+        if (currentBasket != null) {
+            arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, currentBasket);
+            basketListView.setAdapter(arrayAdapter);
+            updateTotals();
+        }
     }
 
     private void updateTotals() {
