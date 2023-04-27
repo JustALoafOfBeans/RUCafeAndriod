@@ -1,15 +1,12 @@
 package com.example.rucafeandriod;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -17,22 +14,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+/**
+ * Class that sets up and manages RecyclerView for donut selection
+ * @author Bridget Zhang
+ */
 class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
     /**
      * Context that inflates layout
      */
     private Context context;
-
     /**
      * List of Donut items, data to populate RecyclerView rows
      */
     private static ArrayList<Donut> items;
-
     /**
      * To handle button clicks
      */
     private static OnItemClickListener onClickListener;
-
     /**
      * Constructor for the DonutAdapter class
      * @param context context for adapter
@@ -44,11 +42,16 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
         this.items = items;
         this.onClickListener = listener;
     }
-
+    /**
+     * Creates a view holder for added items
+     * Overridden from Adapter class
+     * @param parent group to which the added view belongs
+     * @param viewType type of view expressed as numerical value
+     * @return generated ViewHolder
+     */
     @NonNull
     @Override
     public ItemsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //inflate the row layout for the items
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.item_donut, parent, false);
 
@@ -110,20 +113,24 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
         /**
          * Text UI elements for flavor, price, and quantity of each Donut
          */
-        private TextView flavor, price, count;
+        private final TextView flavor, price, count;
         /**
          * Image associated with each Donut
          */
-        private ImageView image;
+        private final ImageView image;
         /**
          * Buttons to increase and decrease quantity of each Donut
          */
-        private Button add, rem;
+        private final Button add, rem;
         /**
          * Row layout
          */
         private ConstraintLayout parentLayout;
 
+        /**
+         * Constructor for ItemsHolder
+         * @param itemView view being added to view holder
+         */
         public ItemsHolder(@NonNull View itemView) {
             super(itemView);
             flavor = itemView.findViewById(R.id.tv_flavor);
@@ -133,10 +140,16 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
             add = itemView.findViewById(R.id.btn_add);
             rem = itemView.findViewById(R.id.btn_remove);
             parentLayout = itemView.findViewById(R.id.layout_donut);
-            setAddButtonOnClick(itemView); //register the onClicklistener for the button on each row.
+            setAddButtonOnClick(itemView);
             setRemButtonOnClick(itemView);
         }
 
+        /**
+         * Method that finds the donut that was clicked
+         * Called by Adapter to find index
+         * @param clicked String flavor associated with targeted item
+         * @return index of target in items list, or -1 if not found
+         */
         private int getClickedPosition(String clicked) {
             String donutClicked = clicked.substring(clicked.indexOf("(") + 1);
             donutClicked = donutClicked.substring(0, donutClicked.indexOf(")"));
@@ -152,8 +165,7 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
         }
 
         /**
-         * Set the onClickListener for the button on each row.
-         * Clicking on the button will create an AlertDialog with the options of YES/NO.
+         * Method that sets the ClickListener for each add "+" button
          * @param itemView The item that has been targeted
          */
         private void setAddButtonOnClick(@NonNull View itemView) {
@@ -165,11 +177,16 @@ class DonutAdapter extends RecyclerView.Adapter<DonutAdapter.ItemsHolder>{
                         onClickListener.setAction("Add");
                         onClickListener.onItemClicked(index); // Process amounts
                         onClickListener.updateSubtotal(price.getText().toString()); // Update subtotal
-                        count.setText(Integer.toString(onClickListener.returnCount())); // TOOD GAG
+                        count.setText(Integer.toString(onClickListener.returnCount()));
                     }
                 }
             });
         }
+
+        /**
+         * Method that sets the ClickListener for each remove "-" button
+         * @param itemView The item that has been targeted
+         */
         private void setRemButtonOnClick(@NonNull View itemView) {
             rem.setOnClickListener(new View.OnClickListener() {
                 @Override
