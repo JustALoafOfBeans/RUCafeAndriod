@@ -78,7 +78,6 @@ public class StoreOrdersActivity extends AppCompatActivity {
                     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
                         Object item = parent.getItemAtPosition(pos);
-                        System.out.println("Spinner set to " + item.toString());  //prints the text in spinner item.
                         changeOrder(Integer.parseInt(item.toString()));
 
                     }
@@ -92,7 +91,6 @@ public class StoreOrdersActivity extends AppCompatActivity {
                     Toast.makeText(StoreOrdersActivity.this, "There are no current orders", Toast.LENGTH_SHORT).show();
                 } else {
                     int selected = Integer.parseInt(orderNumsSpinner.getSelectedItem().toString());
-                    System.out.println("Attempting to delete order #" + selected);
                     deleteOrder(selected);
                 }
             }
@@ -122,7 +120,6 @@ public class StoreOrdersActivity extends AppCompatActivity {
         instantiateSpinner();
         if (!currentStoreOrders.isEmpty()) {
             int displayID = Integer.parseInt(orderNumsSpinner.getSelectedItem().toString());
-            System.out.println("displayID " + displayID);
             for (Order item : currentStoreOrders) {
                 if (item.getNum() == displayID) {
                     arrayAdapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, item.getItems());

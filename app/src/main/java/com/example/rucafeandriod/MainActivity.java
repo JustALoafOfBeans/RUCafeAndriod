@@ -7,26 +7,31 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
-
-import java.io.Serializable;
-import java.net.URI;
 import java.util.ArrayList;
 
+/**
+ * Main Activity that manages reactions leading to other windows
+ * @author Victoria Chen, Bridget Zhang
+ */
 public class MainActivity extends AppCompatActivity {
+    /**
+     * Image button UI for linked Activity pages
+     */
     private ImageButton donutButton, coffeeButton, basketButton, storeOrdersButton;
     /**
      * Single array list to hold all items in basket. Makes it easier so only have to pass one item between activities.
      */
     public static ArrayList<MenuItem> itemsInBasket;
+    /**
+     * Array list to hold all the orders that have been added so far
+     */
     public static ArrayList<Order> allOrders;
+    /**
+     * ActivtyResultLauncher that manages return from other Activities
+     */
     private ActivityResultLauncher<Intent> activityResultLaunch = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
         @Override
@@ -41,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
                     Order toAdd = (Order) result.getData().getSerializableExtra("o");
                     addToStoreOrders(toAdd);
                     itemsInBasket.clear();
-                    System.out.println("Success");
                 } else if (result.getData() != null && result.getData().getSerializableExtra("d") != null) {
                     ArrayList<Donut> bag = (ArrayList<Donut>) result.getData().getSerializableExtra("d");
                     addDonut(bag);
@@ -54,6 +58,10 @@ public class MainActivity extends AppCompatActivity {
         }
     });
 
+    /**
+     * Method that handles initial setup for MainActivity
+     * @param savedInstanceState information from prior activity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,17 +70,23 @@ public class MainActivity extends AppCompatActivity {
         instantiateButtons();
     }
 
+    /**
+     * Method that adds orders to existing list of orders
+     * If existing list of orders is not yet populated, will initialize
+     * @param toAdd Order to add to list
+     */
     private void addToStoreOrders(Order toAdd) {
         if (allOrders == null) {
             allOrders = new ArrayList<>();
         }
         allOrders.add(toAdd);
-        for (Order item : allOrders) {
-            System.out.print(item.getNum() + " : ");
-            System.out.println(item.getItems());
-        }
     }
 
+    /**
+     * Method that adds Coffee item to basket
+     * Coffee item is returned from coffee selection screen
+     * @param toAdd Coffee object to add
+     */
     private void addCoffee(Coffee toAdd) {
         if (itemsInBasket == null) {
             itemsInBasket = new ArrayList<>();
@@ -80,6 +94,10 @@ public class MainActivity extends AppCompatActivity {
         itemsInBasket.add(toAdd);
     }
 
+    /**
+     * Method that adds list of Donut items to basket
+     * Donut items are from donut selection screen
+     */
     private void addDonut(ArrayList<Donut> toAdd) {
         if (itemsInBasket == null) {
             itemsInBasket = new ArrayList<>();
@@ -87,6 +105,9 @@ public class MainActivity extends AppCompatActivity {
         itemsInBasket.addAll(toAdd);
     }
 
+    /**
+     * Method that instantiates buttons to interact with
+     */
     private void instantiateButtons() {
         // Open Donuts Activity Page
         donutButton = (ImageButton) findViewById(R.id.donutButton);
@@ -111,9 +132,7 @@ public class MainActivity extends AppCompatActivity {
         basketButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("Reached 1");
                 openBasketActivity();
-                System.out.println("Reached 1");
             }
         });
 
@@ -127,21 +146,33 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Method that opens the StoreOrdersActivity where all orders saved
+     */
     public void openStoreOrdersActivity() {
         Intent storeIntent = new Intent(this, StoreOrdersActivity.class);
         startActivity(storeIntent);
     }
 
+    /**
+     * Method that opens the basket activity to view added items
+     */
     public void openBasketActivity() {
         Intent basketIntent = new Intent(this, BasketActivity.class);
         activityResultLaunch.launch(basketIntent);
     }
 
+    /**
+     * Method that opens donut selection screen
+     */
     public void openDonutActivity() {
         Intent donutIntent = new Intent(this, DonutActivity.class);
         activityResultLaunch.launch(donutIntent);
     }
 
+    /**
+     * Method that opens coffee selection screen
+     */
     public void openCoffeeActivity() {
         Intent coffeeIntent = new Intent(this, CoffeeActivity.class);
         activityResultLaunch.launch(coffeeIntent);

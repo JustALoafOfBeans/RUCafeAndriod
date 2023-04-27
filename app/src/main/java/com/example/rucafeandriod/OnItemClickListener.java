@@ -1,5 +1,8 @@
 package com.example.rucafeandriod;
 
+/**
+ * OnItemClickListener interface that is used by DonutAdapter
+ */
 public interface OnItemClickListener {
     void onItemClicked(int position);
 

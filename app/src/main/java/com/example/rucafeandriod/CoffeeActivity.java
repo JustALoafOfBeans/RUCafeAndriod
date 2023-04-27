@@ -5,7 +5,6 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,11 +15,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Controls the coffee activity. Allows for manipulation of coffee items to add to basket.
+ * @author Victoria Chen
  */
 public class CoffeeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     /**
