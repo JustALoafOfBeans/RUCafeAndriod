@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -24,6 +25,10 @@ public class StoreOrdersActivity extends AppCompatActivity {
     public static ArrayList<Order> currentStoreOrders;
     private ArrayAdapter<Order> arrayAdapter;
     private ArrayAdapter<MenuItem> arrayAdapter2;
+    /**
+     *  Constant for tax rate in NJ, applied to find tax and total costs
+     */
+    private static final double TAXNJ = 0.06625;
 
     private static final DecimalFormat DF = new DecimalFormat("0.00");
 
@@ -52,9 +57,13 @@ public class StoreOrdersActivity extends AppCompatActivity {
         orderCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int selected = Integer.parseInt(orderNumsSpinner.getSelectedItem().toString());
-                System.out.println("Attempting to delete order #" + selected);
-                deleteOrder(selected);
+                if (orderNumsSpinner.getSelectedItem() == null) {
+                    Toast.makeText(StoreOrdersActivity.this, "There are no current orders", Toast.LENGTH_SHORT).show();
+                } else {
+                    int selected = Integer.parseInt(orderNumsSpinner.getSelectedItem().toString());
+                    System.out.println("Attempting to delete order #" + selected);
+                    deleteOrder(selected);
+                }
             }
         });
     }
@@ -69,23 +78,24 @@ public class StoreOrdersActivity extends AppCompatActivity {
         for (MenuItem item : target.getItems()) {
             sum += item.itemPrice();
         }
+        sum += sum*TAXNJ;
         return ("$ " + Double.valueOf(DF.format(sum)));
     }
 
     private void displayOrders() {
         Order toDisplay;
         instantiateSpinner();
-        int displayID = Integer.parseInt(orderNumsSpinner.getSelectedItem().toString());
-        System.out.println("displayID " + displayID);
-        for (Order item : currentStoreOrders) {
-            if (item.getNum() == displayID) {
-                arrayAdapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, item.getItems());
-                ordersDisplay.setAdapter(arrayAdapter2);
-                orderTotal.setText(calculateTotal(item));
+        if (!currentStoreOrders.isEmpty()) {
+            int displayID = Integer.parseInt(orderNumsSpinner.getSelectedItem().toString());
+            System.out.println("displayID " + displayID);
+            for (Order item : currentStoreOrders) {
+                if (item.getNum() == displayID) {
+                    arrayAdapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, item.getItems());
+                    ordersDisplay.setAdapter(arrayAdapter2);
+                    orderTotal.setText(calculateTotal(item));
+                }
             }
         }
-        // case where order not found?
-        //todo NEED ONCLICK TO UPDATE LIST WHEN NEW SPINNER VALUE PICKED
     }
 
     /**
@@ -121,12 +131,16 @@ public class StoreOrdersActivity extends AppCompatActivity {
     }
 
     private void instantiateSpinner() {
-        for (Order item : currentStoreOrders) {
-            orderNums.add(item.getNum());
+        if (currentStoreOrders != null) {
+            for (Order item : currentStoreOrders) {
+                orderNums.add(item.getNum());
+            }
+            ArrayAdapter ad = new ArrayAdapter(this, android.R.layout.simple_spinner_item, orderNums);
+            ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            orderNumsSpinner.setAdapter(ad);
+        } else {
+            currentStoreOrders = new ArrayList<>();
         }
-        ArrayAdapter ad = new ArrayAdapter(this, android.R.layout.simple_spinner_item, orderNums);
-        ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        orderNumsSpinner.setAdapter(ad);
     }
 
     private void exitOrders() {
