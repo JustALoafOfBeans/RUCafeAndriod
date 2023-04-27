@@ -44,6 +44,10 @@ public class DonutActivity extends AppCompatActivity {
      */
     private static final int MIN_DONUTS = 0;
     /**
+     * Value for 1
+     */
+    private final int ONE = 1;
+    /**
      * Double format for decimal prices
      */
     private static final DecimalFormat DF = new DecimalFormat("0.00");
@@ -113,7 +117,7 @@ public class DonutActivity extends AppCompatActivity {
             boundError = false;
             if (action.equals("Add")) {
                 Donut targetDonut = adapter.getClicked(targeted);
-                newCount = targetDonut.getQuantity() + 1;
+                newCount = targetDonut.getQuantity() + ONE;
                 targetDonut.setQuantity(newCount);
             } else if (action.equals("Remove")) {
                 Donut targetDonut = adapter.getClicked(targeted);
@@ -121,7 +125,7 @@ public class DonutActivity extends AppCompatActivity {
                     newCount = MIN_DONUTS;
                     boundError = true;
                 } else {
-                    newCount = targetDonut.getQuantity() - 1;
+                    newCount = targetDonut.getQuantity() - ONE;
                     targetDonut.setQuantity(newCount);
                 }
             }
@@ -142,7 +146,7 @@ public class DonutActivity extends AppCompatActivity {
          */
         public void updateSubtotal(String changeStr) {
             if (!boundError) {
-                Double changeVal = Double.parseDouble(changeStr.substring(1));
+                Double changeVal = Double.parseDouble(changeStr.substring(ONE));
                 if (action.equals("Add")) {
                     subtotal += changeVal;
                 } else if (action.equals("Remove")) {
