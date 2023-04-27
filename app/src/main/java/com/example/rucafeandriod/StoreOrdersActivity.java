@@ -47,7 +47,6 @@ public class StoreOrdersActivity extends AppCompatActivity {
 
                     }
                     public void onNothingSelected(AdapterView<?> parent) {
-                        displayEmpty();
                     }
                 });
         orderCancel.setOnClickListener(new View.OnClickListener() {
@@ -58,13 +57,6 @@ public class StoreOrdersActivity extends AppCompatActivity {
                 deleteOrder(selected);
             }
         });
-    }
-
-    private void displayEmpty() {
-        // todo untested so far, meant to fill in with delete orders
-        ArrayList<MenuItem> noOrder = new ArrayList<>();
-        arrayAdapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, noOrder);
-        orderTotal.setText("@strings/total_default");
     }
 
     /**
@@ -103,7 +95,6 @@ public class StoreOrdersActivity extends AppCompatActivity {
     private void changeOrder(int orderNum) {
         for (Order item:currentStoreOrders) {
             if (item.getNum() == orderNum) {
-                System.out.println("Found order " + orderNum);
                 arrayAdapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, item.getItems());
                 ordersDisplay.setAdapter(arrayAdapter2);
                 orderTotal.setText(calculateTotal(item));
@@ -114,15 +105,15 @@ public class StoreOrdersActivity extends AppCompatActivity {
     private void deleteOrder(int orderNum) {
         Order remOrder = null; // Order to remove
         for (Order ord : currentStoreOrders) {
-            remOrder = ord;
+            if (ord.getNum() == orderNum) {
+                remOrder = ord;
+            }
         }
         if (remOrder != null) {
             currentStoreOrders.remove(remOrder);
         }
         orderNums.clear();
         if (currentStoreOrders.size() == 0) {
-            System.out.println("Reached 1");
-            // Send back to main view // todo reaches both print statements, crashes
             exitOrders();
         } else {
             displayOrders();
@@ -139,7 +130,6 @@ public class StoreOrdersActivity extends AppCompatActivity {
     }
 
     private void exitOrders() {
-        System.out.println("Reached 2");
         Intent intent = new Intent (this, MainActivity.class);
         intent.putExtra("ord", currentStoreOrders);
         setResult(RESULT_OK,intent);
