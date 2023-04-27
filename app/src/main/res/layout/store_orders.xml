@@ -62,6 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
+        android:gravity="center"
         android:orientation="horizontal"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
@@ -75,18 +76,6 @@
             android:text="@string/cancel"
             tools:ignore="VisualLintButtonSize" />
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/finalize_button"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:background="@color/cream_light"
-            android:text="@string/export"
-            tools:ignore="VisualLintButtonSize" />
     </LinearLayout>
 
     <TextView
